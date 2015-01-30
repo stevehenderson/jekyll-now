@@ -15,4 +15,4 @@ I've got it working in this [this repository.](https://github.com/stevehenderson
 TODO:
 
 * Port the example to OpenGL ES 2.0
-* Incorporate a lightwegith 3D game engine (maybe [JPCT](http://www.jpct.net) )
+* Incorporate a lightweight 3D game engine (maybe [JPCT](http://www.jpct.net) )
