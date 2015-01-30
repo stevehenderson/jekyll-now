@@ -10,6 +10,9 @@ I wanted to work in Unity, but the Unity SDK for Tango doesn't allow point cloud
 
 So one needs to use java and connect the Tango to a surface view.
 
-I've got it working in this repos:
+I've got it working in this [this repository.](https://github.com/stevehenderson/TangoAugmentedRealityTest2)
 
-[here](https://github.com/stevehenderson/TangoAugmentedRealityTest2)
+TODO:
+
+* Port the example to OpenGL ES 2.0
+* Incorporate a lightwegith 3D game engine (maybe [JPCT](http://www.jpct.net) )
