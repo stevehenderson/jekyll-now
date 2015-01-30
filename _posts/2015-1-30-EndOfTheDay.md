@@ -12,4 +12,4 @@ So one needs to use java and connect the Tango to a surface view.
 
 I've got it working in this repos:
 
-!(https://github.com/stevehenderson/TangoAugmentedRealityTest2[https://github.com/stevehenderson/TangoAugmentedRealityTest2]
+[here](https://github.com/stevehenderson/TangoAugmentedRealityTest2)
