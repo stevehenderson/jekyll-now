@@ -1,6 +1,6 @@
 ---
 layout: post
-title: My second post
+title: Making some headway with Tango connectSurface
 ---
 
 
