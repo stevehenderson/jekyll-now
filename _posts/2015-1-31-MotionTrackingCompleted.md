@@ -13,7 +13,7 @@ So you need to use the connectTabgo() method.  See [this post](http://stackoverf
 
 Well, I've cracked the code on it and have a pretty good simple demo working that is a proof of concept:
 
-https://github.com/stevehenderson/GoogleTango_AugmentedRealityTest_MotionCapture
+[Click here for the repository](https://github.com/stevehenderson/GoogleTango_AugmentedRealityTest_MotionCapture)
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/mwLznQ3lJ3s" frameborder="0" allowfullscreen></iframe>
 
