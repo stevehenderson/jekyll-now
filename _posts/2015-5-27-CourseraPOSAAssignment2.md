@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Coursera Assignment 2 Turn0in
+title: Coursera Assignment 2 Turn-in
 ---
 
 One of the motivators I'm using to help stay in the coding game is Coursera.
