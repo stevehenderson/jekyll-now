@@ -1,16 +1,8 @@
 ---
-layout: default
+layout: page
+title: Blog
+permalink: /blog/
 ---
-
-<h1>Steve's Sandbox</h1>
-
-This is a sandbox to capture the stuff I am working on.
-
-<br>
-
-<a href="{{ site.baseurl }}/datascience">Data Science</a>
-
-<hr>
 
 <div class="posts">
   {% for post in site.posts %}
