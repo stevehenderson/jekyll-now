@@ -1,11 +1,6 @@
-- name: Grooveshark
-  site: "http://grooveshark.com/"
+- name: SEI
+  site: "http://sei.cmu.edu/"
 
 - name: Plex
   site: "https://plex.tv/"
 
-- name: Cloudflare
-  site: "https://www.cloudflare.com/"
-
-- name: Prismatic
-  site: "http://getprismatic.com/home"

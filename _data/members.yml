@@ -1,39 +1,7 @@
-- name: Chris Dolphin
-  github: likethemammal
+- name: Steve Henderson
+  github: stevehenderson
   author-img: "https://avatars1.githubusercontent.com/u/3430841"
-  bio: "My name is Chris. I'm a developer, longboarder, chillwave-lover, and doer of things. I build games and write jokes with code."
-  companies: [Grooveshark, Plex]
-  twitter: https://twitter.com/likethemammal
-  google-plus: https://plus.google.com/u/0/+ChrisDolphin/posts
+  bio: "I like to code."
+  companies: [SEI, Plex]
   website: http://likethemammal.com
   email: dolphin@likethemammal.com
-
-- name: Brian Picciano
-  github: mediocregopher
-  author-img: "https://avatars.githubusercontent.com/u/933154"
-  bio: "Coding, climbing, longboarding, movie watcher, ginger. I love go, clojure, redis, and sometimes erlang."
-  companies: [Grooveshark]
-  google-plus: https://plus.google.com/u/0/+BrianPiccianoWillNeverBeAbleToGiveOutThisURL/posts
-  website: http://mediocregopher.com
-  email: mediocregopher@gmail.com
-  twitter: https://twitter.com/mediocre_gopher
-
-- name: Marco Polo
-  github: marcopolo
-  author-img: "https://avatars2.githubusercontent.com/u/594035"
-  bio: "Partially Functional"
-  companies: [Grooveshark, Prismatic]
-  google-plus: https://plus.google.com/u/0/116812095064551132176/posts
-  twitter: https://twitter.com/open_sourcery
-  website: http://marcopolo.io/
-  email: marco@marcopolo.io
-
-- name: Andrew Kennedy
-  github: akenn
-  author-img: "https://avatars0.githubusercontent.com/u/405000"
-  bio: "My name is Andrew Kennedy. I was born in 1992 and raised in Saudi Arabia. I'm a runner, programmer, musician, and amateur photographer. During the day I'm a Web Developer for CloudFlare. At night I work on open source projects. You can find all my coding endeavors on GitHub."
-  companies: [Grooveshark, Cloudflare]
-  google-plus: https://google.com/+AndrewKennedy_L1
-  twitter: https://twitter.com/helpybot
-  website: http://akenn.org/
-  email: andrew@akenn.org
