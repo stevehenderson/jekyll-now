@@ -1,0 +1,1362 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <link rel="icon" href="/favicon.ico" sizes="32x32" type="image/x-icon">
+
+    <!--  Apple  -->
+    <link rel="apple-touch-icon-precomposed" href="/imgs/favicon/apple-touch-icon-precomposed.png">
+
+    <!--  Microsoft  -->
+    <meta name="msapplication-TileColor" content="#D8F0CC">
+    <meta name="msapplication-TileImage" content="/imgs/favicon/tileicon.png">
+
+    <!-- General page specifics -->
+
+    <!-- title variable -->
+    
+
+        
+
+    
+
+    <!-- url variable -->
+    
+
+        
+
+    
+
+    <!-- author variable -->
+    
+
+        
+
+    
+
+    <!-- keywords variable -->
+    
+
+    <title>An Intro to Functional Reactive Programming in UIs | Cryptic Chat</title>
+    <meta name="description" content="We are a group of developers involved in the tech industry that work, laugh, discover, and grow together. We encourage each other to push the boundaries of the technology we work with everyday. To help reach our personal goals we collaborating often and want others to share in this  experience.
+">
+    <meta name="keywords" content="                                    javascript,                            react,                            frp,                            functional,                            reactive,                            elm,                            om,                        ">
+    <meta name="author" content="Chris Dolphin">
+
+    <!-- Facebook page specifics -->
+    <meta property="og:title" content="An Intro to Functional Reactive Programming in UIs | Cryptic Chat">
+    <meta property="og:description" content="We are a group of developers involved in the tech industry that work, laugh, discover, and grow together. We encourage each other to push the boundaries of the technology we work with everyday. To help reach our personal goals we collaborating often and want others to share in this  experience.
+">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Cryptic Chat">
+    <meta property="og:image" content="">
+
+    <!-- Twitter page specifics -->
+    <meta name="twitter:title" content="An Intro to Functional Reactive Programming in UIs | Cryptic Chat">
+    <meta name="twitter:description" content="We are a group of developers involved in the tech industry that work, laugh, discover, and grow together. We encourage each other to push the boundaries of the technology we work with everyday. To help reach our personal goals we collaborating often and want others to share in this  experience.
+">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:url" content="/an-intro-to-functional-reactive-programming/">
+    <meta name="twitter:site" content="@likethemammal">
+    <meta name="twitter:image" content="">
+
+
+    <link rel="stylesheet" href="/styles.css">
+    <link rel="canonical" href="https://cryptic.io/an-intro-to-functional-reactive-programming/">
+
+    <link href="//fonts.googleapis.com/css?family=Open+Sans:400italic,400,600" rel="stylesheet" type="text/css">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+
+    <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-37560411-4', 'auto');
+    ga('require', 'displayfeatures');
+    ga('send', 'pageview');
+
+</script>
+
+</head>
+
+
+  
+
+  <body>
+
+  
+
+    <div id="nav-band">
+    <div id="nav">
+        <a id="logo" href="/">
+            <i class="fa fa-users"></i>
+            Cryptic: chat
+        </a>
+
+        <nav id="desktop-nav">
+            <a class="nav-item" href="/search" title="Search">Search</a>
+            <a class="nav-item" href="/tags" title="Tags">Tags</a>
+            <a class="nav-item" href="/members" title="Members">Members</a>
+            <a class="nav-item" href="http://github.com/cryptic-io/cryptic-chat/" title="Github Repo">Github</a>
+            <a class="nav-item" href="/about" title="About">About</a>
+            <a class="nav-item" href="/" title="Blog">Blog</a>
+        </nav>
+
+        <input id="mobile-nav-open" class="mobile-nav-toggle" type="text" readonly>
+        <input id="mobile-nav-close" class="mobile-nav-toggle" type="text" readonly>
+
+        <nav id="mobile-nav">
+            <a class="nav-item" href="/" title="Blog">Blog</a>
+            <a class="nav-item" href="/about" title="About">About</a>
+            <a class="nav-item" href="http://github.com/cryptic-io/cryptic-chat/" title="Github Repo">Github</a>
+            <a class="nav-item" href="/members" title="Members">Members</a>
+            <a class="nav-item" href="/tags" title="Tags">Tags</a>
+            <a class="nav-item" href="/search" title="Search">Search</a>
+        </nav>
+
+    </div>
+</div>
+
+
+    <div id="main">
+
+        
+
+
+
+
+
+
+
+
+
+
+
+    <div id="post">
+
+        <header id="post-header" class="cf">
+
+            <a href="#author" title="Author">
+                <div id="post-author-avatar">
+                    <img id="post-author-img-bg" src="https://avatars2.githubusercontent.com/u/594035" alt="Marco Polo background" title="Marco Polo background"/>
+                    <img id="post-author-img" src="https://avatars2.githubusercontent.com/u/594035" alt="Marco Polo Avatar Image" title="Marco Polo"/>
+                </div>
+            </a>
+
+            <div id="post-header-words">
+
+                <h1 id="post-title">
+
+                    <span id="post-title-text">
+                        An Intro to Functional Reactive Programming in UIs
+                    </span>
+
+                    <div id="post-tags">
+                        
+                            <a class="post-tag" href="/tags#javascript" title="javascript">#javascript</a>
+                        
+                            <a class="post-tag" href="/tags#react" title="react">#react</a>
+                        
+                            <a class="post-tag" href="/tags#frp" title="frp">#frp</a>
+                        
+                            <a class="post-tag" href="/tags#functional" title="functional">#functional</a>
+                        
+                            <a class="post-tag" href="/tags#reactive" title="reactive">#reactive</a>
+                        
+                            <a class="post-tag" href="/tags#elm" title="elm">#elm</a>
+                        
+                            <a class="post-tag" href="/tags#om" title="om">#om</a>
+                        
+                    </div>
+                </h1>
+
+                <div id="post-metadata">
+                    <span id="post-date">Nov 16, 2014</span>
+                    •
+                    <a id="disqus-num-comments" href="#disqus_thread" title="To the comments">0 comments</a>
+                </div>
+
+            </div>
+
+        </header>
+
+        <div id="post-assets">
+
+            
+            <div class="post-asset-container">
+                <a id="post-demo" class="post-asset" href="http://jsfiddle.net/jf2j62wj/10/" title="Demo">Demo</a>
+            </div>
+            
+
+            
+
+        </div>
+
+        
+
+        <article id="post-content">
+
+            <h1>An Intro to Functional Reactive Programming in UIs</h1>
+
+<p>Maybe you&#39;ve heard of <a href="https://facebook.github.io/react/">React</a>, <a href="https://github.com/swannodette/om">Om</a>,
+or <a href="http://elm-lang.org/">Elm</a>, and wondering: what&#39;s the deal with
+functional reactive programming (FRP)?</p>
+
+<p>This post will act as primer on FRP using vanilla JS, but the ideas presented
+here translate pretty easily in any language and UI system.</p>
+
+<p>So let&#39;s start with an informal, pragmatic definition of FRP:</p>
+
+<blockquote>
+<p>Use streams of data to create the application state (data)</p>
+</blockquote>
+
+<p>And</p>
+
+<blockquote>
+<p>Build a UI given only the application state with pure functions (view)</p>
+</blockquote>
+
+<h2>Streams and arrays</h2>
+
+<p>You can imagine streams of data as a set of values over time.</p>
+
+<p>A stream of numbers representing a counter would look like:
+<code>
+[0,1,2,3,4,5,6,...]
+</code>
+Each number is essentially a snapshot of the value at that time.</p>
+
+<p>Streams are similar to arrays, but the main difference is time.
+An immutable array has all the values it will ever have when it is created, while a stream represents all the values that have happened and will
+happen.</p>
+
+<p>Here&#39;s a concrete example: You are an owner of an exclusive restaurant.
+It&#39;s so exclusive that people have to make reservations months in advance.
+Every night you have a list of people at your restaurant (because they&#39;ve
+already made reservations). Imagine the list being <code>[amy, sally, bob]</code>.
+To count the number of guests, we would just reduce over the list
+adding 1 for every guest. If we wanted to know how much each guest spent
+we would map against a function that tells us the guest&#39;s bill.</p>
+
+<p>This is just a normal array with normal map/reduce construct.
+For completeness here&#39;s the equivalent code.</p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">var</span> <span class="nx">guests</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;amy&quot;</span><span class="p">,</span> <span class="s2">&quot;sally&quot;</span><span class="p">,</span> <span class="s2">&quot;bob&quot;</span><span class="p">]</span>
+<span class="kd">var</span> <span class="nx">bills</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;amy&quot;</span><span class="o">:</span><span class="mf">22.50</span><span class="p">,</span> <span class="s2">&quot;sally&quot;</span><span class="o">:</span><span class="mf">67.00</span><span class="p">,</span> <span class="s2">&quot;bob&quot;</span><span class="o">:</span><span class="mf">6.00</span><span class="p">}</span>
+
+<span class="c1">// Count the guests</span>
+<span class="nx">guests</span><span class="p">.</span><span class="nx">reduce</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">sum</span><span class="p">,</span> <span class="nx">guest</span><span class="p">){</span><span class="k">return</span> <span class="nx">sum</span><span class="o">+</span><span class="mi">1</span><span class="p">;},</span> <span class="mi">0</span><span class="p">)</span>
+<span class="c1">// =&gt; 3</span>
+<span class="c1">// Get the bills</span>
+<span class="nx">guests</span><span class="p">.</span><span class="nx">map</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">guest</span><span class="p">){</span><span class="k">return</span> <span class="nx">bills</span><span class="p">[</span><span class="nx">guest</span><span class="p">]})</span>
+<span class="c1">// =&gt; [22.5, 67, 6]</span>
+</code></pre></div>
+<p>Unfortunately Sally had some bad fish and died after eating at your
+restaurant, so everyone has cancelled their reservations and you are
+now a fast food place. In this case you don&#39;t have a list of guests,
+instead you have a <em>stream</em> of people who come in and order food.
+<code>Frank</code> might come in at 10 am, followed by <code>Jack</code> at 2 pm. To get
+similar data as before we would again map/reduce over the stream,
+but since we are operating over a stream that never ends, the values
+from map/reduce themselves become streams that never end.</p>
+
+<p>Here is some equivalent pseudo code for streams that calculates
+the <code>guestCounts</code> and the <code>guestBills</code>.</p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">guests</span>      <span class="o">=</span> <span class="p">[...</span> <span class="nx">time</span> <span class="nx">passes</span> <span class="p">...,</span> <span class="nx">Frank</span><span class="p">,</span> <span class="p">...</span> <span class="nx">time</span> <span class="nx">passes</span> <span class="p">...,</span> <span class="nx">Jack</span><span class="p">,</span> <span class="p">...</span> <span class="p">]</span>
+
+<span class="nx">guestCounts</span> <span class="o">=</span> <span class="p">[...</span> <span class="nx">time</span> <span class="nx">passes</span> <span class="p">...,</span> <span class="mi">1</span><span class="p">,</span>     <span class="p">...</span> <span class="nx">time</span> <span class="nx">passes</span> <span class="p">...,</span> <span class="mi">2</span><span class="p">,</span> <span class="p">...</span> <span class="p">]</span>
+<span class="nx">guestBills</span> <span class="o">=</span>  <span class="p">[...</span> <span class="nx">time</span> <span class="nx">passes</span> <span class="p">...,</span> <span class="mf">5.50</span><span class="p">,</span>  <span class="p">...</span> <span class="nx">time</span> <span class="nx">passes</span> <span class="p">...,</span> <span class="mf">6.50</span><span class="p">,</span> <span class="p">...</span> <span class="p">]</span>
+</code></pre></div>
+<p>So a stream is just like an array that never ends, and represents
+snapshots of time.</p>
+
+<p>Now that we have an intuitive idea what streams are, we can actually
+implement them.</p>
+
+<h2>Streams of data</h2>
+
+<p>A stream of numbers representing a counter would look like:
+<code>
+[0,1,2,3,4,5,6,...]
+</code></p>
+
+<p>If we wanted to keep track of how long someone was on our page,
+we could just display the latest value of the counter stream
+ in our UI and that would be enough.</p>
+
+<p>A more involved example: Imagine we had a stream of data
+that represents the keys pressed on the keyboard.</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">[&quot;p&quot;,&quot;w&quot;,&quot;n&quot;,&quot;2&quot;,&quot;o&quot;,&quot;w&quot;,&quot;n&quot;,...]
+</code></pre></div>
+<p>Now we want to have a stream that represents the state of the system,
+say the amount of keys pressed.</p>
+
+<p>Our key count stream would look like:</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">[&quot;p&quot;,&quot;w&quot;,&quot;n&quot;,&quot;2&quot;,&quot;o&quot;,&quot;w&quot;,&quot;n&quot;,...]
+=&gt;
+[ 1,  2,  3,  4,  5,  6,  7, ...]
+</code></pre></div>
+<p>This transformation would happen with a reducing function.</p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">var</span> <span class="nx">keyCountReducer</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">reducedValue</span><span class="p">,</span> <span class="nx">streamSnapshot</span><span class="p">){</span>
+ <span class="k">return</span> <span class="nx">reducedValue</span> <span class="o">+</span> <span class="mi">1</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>This function takes in the stream value, and a reduced value so far, and
+returns a new reduced value. In this case a simple increment.</p>
+
+<p>We&#39;ve talked about streams for a while now, let&#39;s implement them.</p>
+
+<p>In the following code, we create a function that will return an object with two
+methods: <code>observe</code> for registering event listeners and <code>update</code> for adding a value
+to the stream.</p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="c1">// A function to make streams for us</span>
+<span class="kd">var</span> <span class="nx">streamMaker</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(){</span>
+  <span class="kd">var</span> <span class="nx">registeredListeners</span> <span class="o">=</span> <span class="p">[];</span>
+  <span class="k">return</span> <span class="p">{</span>
+    <span class="c1">// Have an observe function, so</span>
+    <span class="c1">// people who are interested can</span>
+    <span class="c1">// get notified when there is an update</span>
+    <span class="nx">observe</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">callback</span><span class="p">){</span>
+      <span class="nx">registeredListeners</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">callback</span><span class="p">)</span>
+    <span class="p">},</span>
+
+    <span class="c1">// Add a value to this stream</span>
+    <span class="c1">// Once added, will notify all</span>
+    <span class="c1">// interested parties</span>
+    <span class="nx">update</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">value</span><span class="p">){</span>
+      <span class="nx">registeredListeners</span><span class="p">.</span><span class="nx">forEach</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">cb</span><span class="p">){</span>
+        <span class="nx">cb</span><span class="p">(</span><span class="nx">value</span><span class="p">);</span>
+      <span class="p">})</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>We also want to make a helper function that will create a new reduced stream
+given an existing <code>stream</code>, a <code>reducingFunction</code>, and an <code>initialReducedValue</code>:</p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="c1">// A function to make a new stream from an existing stream</span>
+<span class="c1">// a reducing function, and an initial reduced value</span>
+<span class="kd">var</span> <span class="nx">reducedStream</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">stream</span><span class="p">,</span> <span class="nx">reducingFunction</span><span class="p">,</span> <span class="nx">initialReducedValue</span><span class="p">){</span>
+  <span class="kd">var</span> <span class="nx">newStream</span> <span class="o">=</span> <span class="nx">streamMaker</span><span class="p">();</span>
+  <span class="kd">var</span> <span class="nx">reducedValue</span> <span class="o">=</span> <span class="nx">initialReducedValue</span><span class="p">;</span>
+
+  <span class="nx">stream</span><span class="p">.</span><span class="nx">observe</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">streamSnapshotValue</span><span class="p">){</span>
+    <span class="nx">reducedValue</span> <span class="o">=</span> <span class="nx">reducingFunction</span><span class="p">(</span><span class="nx">reducedValue</span><span class="p">,</span> <span class="nx">streamSnapshotValue</span><span class="p">);</span>
+    <span class="nx">newStream</span><span class="p">.</span><span class="nx">update</span><span class="p">(</span><span class="nx">reducedValue</span><span class="p">);</span>
+  <span class="p">});</span>
+  <span class="k">return</span> <span class="nx">newStream</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>Now to implement the keypress stream and count stream.</p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="c1">// Our reducer from before</span>
+<span class="kd">var</span> <span class="nx">keyCountReducer</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">reducedValue</span><span class="p">,</span> <span class="nx">streamSnapshot</span><span class="p">){</span>
+ <span class="k">return</span> <span class="nx">reducedValue</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="c1">// Create the keypress stream</span>
+<span class="kd">var</span> <span class="nx">keypressStream</span> <span class="o">=</span> <span class="nx">streamMaker</span><span class="p">();</span>
+<span class="c1">// an observer will have that side effect of printing out to the console</span>
+<span class="nx">keypressStream</span><span class="p">.</span><span class="nx">observe</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">v</span><span class="p">){</span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;key: &quot;</span><span class="p">,</span><span class="nx">v</span><span class="p">)});</span>
+
+<span class="c1">// Whenever we press a key, we&#39;ll update the stream to be the char code.</span>
+<span class="nb">document</span><span class="p">.</span><span class="nx">onkeypress</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">e</span><span class="p">){</span>
+  <span class="nx">keypressStream</span><span class="p">.</span><span class="nx">update</span><span class="p">(</span><span class="nb">String</span><span class="p">.</span><span class="nx">fromCharCode</span><span class="p">(</span><span class="nx">e</span><span class="p">.</span><span class="nx">charCode</span><span class="p">))</span>
+<span class="p">}</span>
+
+<span class="c1">// Using our reducedStream helper function we can make a new stream</span>
+<span class="c1">// That reduces the keypresses into a stream of key counts</span>
+<span class="kd">var</span> <span class="nx">countStream</span> <span class="o">=</span> <span class="nx">reducedStream</span><span class="p">(</span><span class="nx">keypressStream</span><span class="p">,</span> <span class="nx">keyCountReducer</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<span class="nx">countStream</span><span class="p">.</span><span class="nx">observe</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">v</span><span class="p">){</span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;Count: &quot;</span><span class="p">,</span><span class="nx">v</span><span class="p">)})</span>
+</code></pre></div>
+<p>Now with the new stream we can display it like we did before.</p>
+
+<p>Which leads us into our next point...</p>
+
+<h2>Rendering UIs given data</h2>
+
+<p>Now that we have a system for generating state through streams,
+let&#39;s actually show something off.</p>
+
+<p>This is where React.js shines, but for the purpose of this post we&#39;ll
+build our own system.</p>
+
+<p>Let&#39;s say at one point in time our data looks like:</p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="p">{</span><span class="s2">&quot;Count&quot;</span><span class="o">:</span><span class="mi">1</span><span class="p">}</span>
+</code></pre></div>
+<p>And we want to render a UI that represents this information.
+So we&#39;ll write a simple piece of JS that renders html directly from the map.
+To keep it easy, we&#39;ll use the keys as div ids.</p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="c1">//Pure Function to create the dom nodes</span>
+<span class="kd">var</span> <span class="nx">createDOMNode</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">key</span><span class="p">,</span> <span class="nx">dataMapOrValue</span><span class="p">){</span>
+  <span class="kd">var</span> <span class="nx">div</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="s2">&quot;div&quot;</span><span class="p">);</span>
+  <span class="nx">div</span><span class="p">.</span><span class="nx">setAttribute</span><span class="p">(</span><span class="s2">&quot;id&quot;</span><span class="p">,</span><span class="nx">key</span><span class="p">);</span>
+
+  <span class="c1">// Recurse for children</span>
+  <span class="k">if</span> <span class="p">(</span><span class="k">typeof</span> <span class="nx">dataMapOrValue</span> <span class="o">===</span> <span class="s2">&quot;object&quot;</span> <span class="o">&amp;&amp;</span> <span class="nx">dataMapOrValue</span> <span class="o">!==</span> <span class="kc">null</span><span class="p">){</span>
+    <span class="nb">Object</span><span class="p">.</span><span class="nx">keys</span><span class="p">(</span><span class="nx">dataMapOrValue</span><span class="p">).</span><span class="nx">forEach</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">childKey</span><span class="p">){</span>
+      <span class="kd">var</span> <span class="nx">child</span> <span class="o">=</span> <span class="nx">createDOMNode</span><span class="p">(</span><span class="nx">childKey</span><span class="p">,</span> <span class="nx">dataMapOrValue</span><span class="p">[</span><span class="nx">childKey</span><span class="p">]);</span>
+      <span class="nx">div</span><span class="p">.</span><span class="nx">appendChild</span><span class="p">(</span><span class="nx">child</span><span class="p">);</span>
+    <span class="p">})</span>
+  <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+    <span class="c1">// There are no children just a value.</span>
+    <span class="c1">// We set the data to be the content of the node</span>
+    <span class="c1">// Note this does not protect against XSS</span>
+    <span class="nx">div</span><span class="p">.</span><span class="nx">innerHTML</span> <span class="o">=</span> <span class="nx">dataMapOrValue</span><span class="p">;</span>
+  <span class="p">}</span>
+  <span class="k">return</span> <span class="nx">div</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="c1">// Render Data</span>
+
+<span class="kd">var</span> <span class="nx">render</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">rootID</span><span class="p">,</span> <span class="nx">appState</span><span class="p">){</span>
+  <span class="kd">var</span> <span class="nx">root</span><span class="p">;</span>
+  <span class="c1">// Check if the root id is even defined</span>
+  <span class="k">if</span> <span class="p">(</span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="nx">rootID</span><span class="p">)</span> <span class="o">===</span> <span class="kc">null</span><span class="p">){</span>
+    <span class="c1">// We need to add this root id so we can use it later</span>
+    <span class="nx">root</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="s2">&quot;div&quot;</span><span class="p">);</span>
+    <span class="nx">root</span><span class="p">.</span><span class="nx">setAttribute</span><span class="p">(</span><span class="s2">&quot;id&quot;</span><span class="p">,</span><span class="nx">rootID</span><span class="p">);</span>
+    <span class="nb">document</span><span class="p">.</span><span class="nx">body</span><span class="p">.</span><span class="nx">appendChild</span><span class="p">(</span><span class="nx">root</span><span class="p">);</span>
+  <span class="p">}</span>
+
+  <span class="nx">root</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="nx">rootID</span><span class="p">);</span>
+  <span class="c1">// Clear all the existing content in the page</span>
+  <span class="nx">root</span><span class="p">.</span><span class="nx">innerHTML</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span><span class="p">;</span>
+  <span class="c1">// render the appState back in</span>
+  <span class="nx">root</span><span class="p">.</span><span class="nx">appendChild</span><span class="p">(</span><span class="nx">createDOMNode</span><span class="p">(</span><span class="nx">rootID</span><span class="p">,</span> <span class="nx">appState</span><span class="p">));</span>
+<span class="p">}</span>
+
+<span class="nx">render</span><span class="p">(</span><span class="s2">&quot;counter&quot;</span><span class="p">,</span> <span class="p">{</span><span class="s2">&quot;Count&quot;</span><span class="o">:</span><span class="mi">1</span><span class="p">})</span>
+</code></pre></div>
+<p>After running this code on a <a href="about:blank">blank page</a> we have a page
+that says <code>1</code>, it worked!</p>
+
+<p>A bit boring though, how about we make it a bit more interesting by updating
+on the stream.</p>
+
+<h2>Rendering Streams of data</h2>
+
+<p>We&#39;ve figured out how streams work, how to work with streams, and how to
+render a page given some data. Now we&#39;ll tie all the parts together; render
+the stream as it changes over time.</p>
+
+<p>It really is simple. All we have to do is re-render whenever we receive
+a new value on the stream.</p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="c1">// Let&#39;s observe the countstream and render when we get an update</span>
+<span class="nx">countStream</span><span class="p">.</span><span class="nx">observe</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">value</span><span class="p">){</span>
+  <span class="nx">render</span><span class="p">(</span><span class="s2">&quot;counter&quot;</span><span class="p">,</span> <span class="nx">value</span><span class="p">)</span>
+<span class="p">})</span>
+
+<span class="c1">// And if we wanted to render what the keypress stream tells us, we can do so</span>
+<span class="c1">// just as easily</span>
+<span class="nx">keypressStream</span><span class="p">.</span><span class="nx">observe</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">value</span><span class="p">){</span>
+  <span class="nx">render</span><span class="p">(</span><span class="s2">&quot;keypress&quot;</span><span class="p">,</span> <span class="nx">value</span><span class="p">);</span>
+<span class="p">});</span>
+</code></pre></div>
+<h2>Single App State</h2>
+
+<p>A single app state means that there is only one object that encapsulates the
+state of your application.</p>
+
+<p>Benefits:</p>
+
+<ul>
+<li>All changes to the frontend happen from this app state.</li>
+<li>You can snapshot this state and be able to recreate the
+frontend at any point in time (facilitates undo/redo).</li>
+</ul>
+
+<p>Downsides:</p>
+
+<ul>
+<li>You may conflate things that shouldn&#39;t be together.</li>
+</ul>
+
+<p>Having a single place that reflects the whole state is pretty amazing,
+how often have you had your app get messed up because of some rogue event?
+or hidden state affecting the application, or an ever growing state
+scattered around the application.</p>
+
+<p>No more.</p>
+
+<p>A single app state is a natural end to the directed acyclic graph that
+we&#39;ve created with streams.</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">stream1 -&gt; mappedStream
+                        \
+                         mergedStream -&gt; appStateStream
+                        /
+stream2 -&gt; reducedStream
+</code></pre></div>
+<h2>Implementing Single App State</h2>
+
+<p>In our previous example we had two pieces of state,
+the counter and the keypress. We could merge these together into one stream, and
+then form a single app state from that stream.</p>
+
+<p>First let&#39;s make a helper function that will merge streams for us. To keep it
+general and simple we&#39;ll take only two streams and a merging function.
+It will return a new stream which is the merge of both streams with the mergeFn.</p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="c1">// A merge streams helper function</span>
+<span class="kd">var</span> <span class="nx">mergeStreams</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">streamA</span><span class="p">,</span> <span class="nx">streamB</span><span class="p">,</span> <span class="nx">mergeFn</span><span class="p">){</span>
+
+  <span class="kd">var</span> <span class="nx">streamData</span> <span class="o">=</span> <span class="p">[</span><span class="kc">null</span><span class="p">,</span> <span class="kc">null</span><span class="p">];</span>
+  <span class="kd">var</span> <span class="nx">newStream</span> <span class="o">=</span> <span class="nx">streamMaker</span><span class="p">();</span>
+
+  <span class="nx">streamA</span><span class="p">.</span><span class="nx">observe</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">value</span><span class="p">){</span>
+    <span class="nx">streamData</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="nx">value</span><span class="p">;</span>
+    <span class="nx">newStream</span><span class="p">.</span><span class="nx">update</span><span class="p">(</span><span class="nx">mergeFn</span><span class="p">.</span><span class="nx">apply</span><span class="p">(</span><span class="kc">null</span><span class="p">,</span><span class="nx">streamData</span><span class="p">));</span>
+  <span class="p">});</span>
+  <span class="nx">streamB</span><span class="p">.</span><span class="nx">observe</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">value</span><span class="p">){</span>
+    <span class="nx">streamData</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="nx">value</span><span class="p">;</span>
+    <span class="nx">newStream</span><span class="p">.</span><span class="nx">update</span><span class="p">(</span><span class="nx">mergeFn</span><span class="p">.</span><span class="nx">apply</span><span class="p">(</span><span class="kc">null</span><span class="p">,</span><span class="nx">streamData</span><span class="p">));</span>
+  <span class="p">});</span>
+
+  <span class="k">return</span> <span class="nx">newStream</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>This implementation will call the merge function with the latest value from the
+streams or null if the stream hasn&#39;t emitted anything yet. This means the output
+can return duplicate values of one of the streams.</p>
+
+<p>(As a side note, the performance impact of duplicate values can be mitigated
+ with immutable datastructures)</p>
+
+<p>We want to put both the keypress and the counter in one object, so our
+merge function will do just that.</p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">var</span> <span class="nx">mergeIntoObject</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">keypress</span><span class="p">,</span> <span class="nx">counter</span><span class="p">){</span>
+  <span class="k">return</span> <span class="p">{</span><span class="s2">&quot;counter&quot;</span> <span class="o">:</span> <span class="nx">counter</span><span class="p">,</span>
+          <span class="s2">&quot;keypress&quot;</span><span class="o">:</span> <span class="nx">keypress</span><span class="p">};</span>
+<span class="p">};</span>
+</code></pre></div>
+<p>Now to create the single app state stream, and render that single app state.</p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">var</span> <span class="nx">appStateStream</span> <span class="o">=</span> <span class="nx">mergeStreams</span><span class="p">(</span><span class="nx">keypressStream</span><span class="p">,</span> <span class="nx">countStream</span><span class="p">,</span> <span class="nx">mergeIntoObject</span><span class="p">);</span>
+
+<span class="nx">appStateStream</span><span class="p">.</span><span class="nx">observe</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">value</span><span class="p">){</span>
+  <span class="nx">render</span><span class="p">(</span><span class="s2">&quot;app&quot;</span><span class="p">,</span> <span class="nx">value</span><span class="p">);</span>
+<span class="p">});</span>
+</code></pre></div>
+<h2>Final Code</h2>
+
+<p>Most of these functions are library functions that you wouldn&#39;t need to implement
+yourself. The final application specific code would look like:</p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="c1">// Create the keypress stream</span>
+<span class="kd">var</span> <span class="nx">keypressStream</span> <span class="o">=</span> <span class="nx">streamMaker</span><span class="p">();</span>
+
+<span class="c1">// Whenever we press a key, we&#39;ll update the stream to be the char code.</span>
+<span class="nb">document</span><span class="p">.</span><span class="nx">onkeypress</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">e</span><span class="p">){</span>
+  <span class="nx">keypressStream</span><span class="p">.</span><span class="nx">update</span><span class="p">(</span><span class="nb">String</span><span class="p">.</span><span class="nx">fromCharCode</span><span class="p">(</span><span class="nx">e</span><span class="p">.</span><span class="nx">charCode</span><span class="p">))</span>
+<span class="p">}</span>
+
+<span class="kd">var</span> <span class="nx">keyCountReducer</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">reducedValue</span><span class="p">,</span> <span class="nx">streamSnapshot</span><span class="p">){</span>
+  <span class="k">return</span> <span class="nx">reducedValue</span> <span class="o">+</span> <span class="mi">1</span>
+<span class="p">}</span>
+<span class="c1">// Using our reducedStream helper function we can make a new stream</span>
+<span class="c1">// That reduces the keypresses into a stream of key counts</span>
+<span class="kd">var</span> <span class="nx">countStream</span> <span class="o">=</span> <span class="nx">reducedStream</span><span class="p">(</span><span class="nx">keypressStream</span><span class="p">,</span> <span class="nx">keyCountReducer</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+
+<span class="kd">var</span> <span class="nx">mergeIntoObject</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">keypress</span><span class="p">,</span> <span class="nx">counter</span><span class="p">){</span>
+  <span class="k">return</span> <span class="p">{</span><span class="s2">&quot;counter&quot;</span> <span class="o">:</span> <span class="nx">counter</span><span class="p">,</span>
+          <span class="s2">&quot;keypress&quot;</span><span class="o">:</span> <span class="nx">keypress</span><span class="p">};</span>
+<span class="p">};</span>
+
+<span class="kd">var</span> <span class="nx">appStateStream</span> <span class="o">=</span> <span class="nx">mergeStreams</span><span class="p">(</span><span class="nx">keypressStream</span><span class="p">,</span> <span class="nx">countStream</span><span class="p">,</span> <span class="nx">mergeIntoObject</span><span class="p">);</span>
+
+<span class="nx">appStateStream</span><span class="p">.</span><span class="nx">observe</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">value</span><span class="p">){</span>
+  <span class="nx">render</span><span class="p">(</span><span class="s2">&quot;app&quot;</span><span class="p">,</span> <span class="nx">value</span><span class="p">);</span>
+<span class="p">});</span>
+</code></pre></div>
+<p>You can see a running version of this code <a href="http://jsfiddle.net/Ld3o1Lm5/2/">here</a></p>
+
+<h2>The render, a closer look</h2>
+
+<p>So what does the render actually do?</p>
+
+<p>Well, it clears the inner html of a containing div and adds an element inside of it.
+But that&#39;s pretty standard, how are we defining what element is created?
+Why yes, it&#39;s the createDOMNode function. In fact, if you wanted your data displayed
+differently (e.g. in color, or upside down) all you&#39;d have to do is write your own
+createDOMNode function that adds the necessary styles or elements.</p>
+
+<p>Essentially, the <code>createDOMNode</code> function controls what your UI will look like.
+createDOMNode is a pure function, meaning for the same set of inputs, you&#39;ll
+always get the same set of outputs, and has no side effects (like an api call).
+This wasn&#39;t a happy accident, FRP leads to a
+design where the functions which build your UI are pure functions!
+This means UI components are significantly easier to reason about.</p>
+
+<h2>Time travel</h2>
+
+<p>Often when people talk about FRP, time travel is bound to get brought up.
+Specifically the ability to undo and redo the state of your UI. Hopefully, if
+you&#39;ve gotten this far, you can see how trivial it would be to store the data
+used to render the UIs in an array and just move forward and backward to
+implement redo and undo.</p>
+
+<h2>Performance</h2>
+
+<p>If you care about performance in the slightest, you probably shuddered when
+I nuked the containing element and recreated all the children nodes. I don&#39;t
+blame you; however, that is an implementation detail. While my implementation
+is slow, there are implementations (e.g. React) that only update the items and
+attributes that have changed, thus reaping performance benefits with no cost
+to the programmer! You are getting a better system for modeling UIs and
+the performance boosts for free! Furthermore a lot of smart people are working
+on React, and as it gets faster, so will your app. Without any effort on your
+part.</p>
+
+<h2>Now with actual libraries</h2>
+
+<p>A lot of what we wrote was the library to get streams up and running,
+however those already exists (e.g. <a href="http://baconjs.github.io/">Bacon.js</a> and <a href="https://facebook.github.io/react/">React.js</a>)</p>
+
+<p>A couple quick notes if this is your first time looking at React.js or Bacon.js.</p>
+
+<p><code>getInitialState</code> defines the initial local state of the component.
+<code>componentWillMount</code> is a function that gets called before the component
+is placed on the DOM.</p>
+
+<p><code>&lt;stream&gt;.scan</code> is our reducing function in Bacon.js parlance.</p>
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="c1">// Our streams just like before</span>
+<span class="kd">var</span> <span class="nx">keypressStream</span> <span class="o">=</span> <span class="nx">Bacon</span><span class="p">.</span><span class="nx">fromEventTarget</span><span class="p">(</span><span class="nb">document</span><span class="p">.</span><span class="nx">body</span><span class="p">,</span> <span class="s2">&quot;keypress&quot;</span><span class="p">)</span>
+<span class="p">.</span><span class="nx">map</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="nb">String</span><span class="p">.</span><span class="nx">fromCharCode</span><span class="p">(</span><span class="nx">e</span><span class="p">.</span><span class="nx">charCode</span><span class="p">)</span>
+<span class="p">});</span>
+
+<span class="kd">var</span> <span class="nx">countStream</span> <span class="o">=</span> <span class="nx">keypressStream</span><span class="p">.</span><span class="nx">scan</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">count</span><span class="p">,</span> <span class="nx">key</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="nx">count</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span>
+<span class="p">});</span>
+
+<span class="kd">var</span> <span class="nx">KeyPressComponent</span> <span class="o">=</span> <span class="nx">React</span><span class="p">.</span><span class="nx">createClass</span><span class="p">({</span>
+  <span class="nx">getInitialState</span><span class="o">:</span> <span class="kd">function</span><span class="p">(){</span>
+    <span class="k">return</span> <span class="p">{</span><span class="s2">&quot;count&quot;</span><span class="o">:</span><span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;keypress&quot;</span><span class="o">:</span><span class="s2">&quot;&lt;press a key&gt;&quot;</span><span class="p">,</span><span class="s2">&quot;totalWords&quot;</span><span class="o">:</span><span class="s2">&quot;&quot;</span><span class="p">};</span>
+  <span class="p">},</span>
+  <span class="nx">componentWillMount</span><span class="o">:</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">props</span><span class="p">.</span><span class="nx">countStream</span><span class="p">.</span><span class="nx">onValue</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">count</span><span class="p">)</span> <span class="p">{</span>
+      <span class="k">this</span><span class="p">.</span><span class="nx">setState</span><span class="p">({</span><span class="s2">&quot;count&quot;</span><span class="o">:</span> <span class="nx">count</span><span class="p">});</span>
+    <span class="p">}.</span><span class="nx">bind</span><span class="p">(</span><span class="k">this</span><span class="p">));</span>
+
+    <span class="k">this</span><span class="p">.</span><span class="nx">props</span><span class="p">.</span><span class="nx">keypressStream</span><span class="p">.</span><span class="nx">onValue</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">key</span><span class="p">)</span> <span class="p">{</span>
+      <span class="k">this</span><span class="p">.</span><span class="nx">setState</span><span class="p">({</span><span class="s2">&quot;keypress&quot;</span><span class="o">:</span> <span class="nx">key</span><span class="p">});</span>
+    <span class="p">}.</span><span class="nx">bind</span><span class="p">(</span><span class="k">this</span><span class="p">));</span>
+
+    <span class="c1">// Add something extra because why not</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">props</span><span class="p">.</span><span class="nx">keypressStream</span><span class="p">.</span><span class="nx">scan</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">totalWords</span><span class="p">,</span> <span class="nx">key</span><span class="p">)</span> <span class="p">{</span>
+      <span class="k">return</span> <span class="nx">totalWords</span> <span class="o">+</span> <span class="nx">key</span><span class="p">;</span>
+    <span class="p">})</span>
+    <span class="p">.</span><span class="nx">onValue</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">totalWords</span><span class="p">)</span> <span class="p">{</span>
+      <span class="k">this</span><span class="p">.</span><span class="nx">setState</span><span class="p">({</span><span class="s2">&quot;totalWords&quot;</span><span class="o">:</span> <span class="nx">totalWords</span><span class="p">});</span>
+    <span class="p">}.</span><span class="nx">bind</span><span class="p">(</span><span class="k">this</span><span class="p">));</span>
+  <span class="p">},</span>
+  <span class="nx">render</span><span class="o">:</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nx">React</span><span class="p">.</span><span class="nx">DOM</span><span class="p">.</span><span class="nx">div</span><span class="p">(</span><span class="kc">null</span><span class="p">,</span>
+      <span class="nx">React</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="s2">&quot;h1&quot;</span><span class="p">,</span> <span class="kc">null</span><span class="p">,</span> <span class="s2">&quot;Count: &quot;</span> <span class="o">+</span> <span class="k">this</span><span class="p">.</span><span class="nx">state</span><span class="p">.</span><span class="nx">count</span><span class="p">),</span>
+      <span class="nx">React</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="s2">&quot;h1&quot;</span><span class="p">,</span> <span class="kc">null</span><span class="p">,</span> <span class="s2">&quot;Keypress: &quot;</span> <span class="o">+</span> <span class="k">this</span><span class="p">.</span><span class="nx">state</span><span class="p">.</span><span class="nx">keypress</span><span class="p">),</span>
+      <span class="nx">React</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="s2">&quot;h1&quot;</span><span class="p">,</span> <span class="kc">null</span><span class="p">,</span> <span class="s2">&quot;Total words: &quot;</span> <span class="o">+</span> <span class="k">this</span><span class="p">.</span><span class="nx">state</span><span class="p">.</span><span class="nx">totalWords</span><span class="p">))</span>
+    <span class="p">}</span>
+  <span class="p">});</span>
+
+<span class="nx">React</span><span class="p">.</span><span class="nx">render</span><span class="p">(</span><span class="nx">React</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="nx">KeyPressComponent</span><span class="p">,</span> <span class="p">{</span>
+  <span class="nx">keypressStream</span><span class="o">:</span> <span class="nx">keypressStream</span><span class="p">,</span>
+  <span class="nx">countStream</span><span class="o">:</span> <span class="nx">countStream</span>
+<span class="p">}),</span> <span class="nb">document</span><span class="p">.</span><span class="nx">body</span><span class="p">);</span>
+</code></pre></div>
+<p>jsfiddle for this code <a href="http://jsfiddle.net/jf2j62wj/10/">here</a>.</p>
+
+<h2>Closing Notes</h2>
+
+<p><a href="https://facebook.github.io/react/">React</a> is great for reactively rendering the ui.
+<a href="http://baconjs.github.io/">Bacon.js</a> is a great library that implements these streams.</p>
+
+<p>If you&#39;re looking to really delve into FRP:
+<a href="http://elm-lang.org/">Elm</a> has a well thought out FRP system in a haskell like language.</p>
+
+<p>If you&#39;re feeling adventurous give Om &amp; Clojurescript a shot.
+<a href="https://github.com/swannodette/om">Om</a> is a great tool that adds immutability
+to React, and brings React to Clojurescript</p>
+
+<p>Finally, Evan Czaplicki (Elm creator) did a <a href="https://www.youtube.com/watch?v=Agu6jipKfYw">great talk on FRP</a></p>
+
+
+        </article>
+
+        <div id="post-share">
+            <p id="post-share-cta">Did you like this article? Share it!</p>
+            <div id="post-share-buttons">
+                <a target="_blank" href="https://twitter.com/home?status=An Intro to Functional Reactive Programming in UIs https://cryptic.io/an-intro-to-functional-reactive-programming/" title="Share on Twitter">
+                    <svg id="post-share-twitter" class="post-share-button">
+                        <use xlink:href="/imgs/svg.svg#svg-twitter" x="0" y="0" width="100%" height="100%"></use>
+                    </svg>
+                </a>
+                <a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://cryptic.io/an-intro-to-functional-reactive-programming/" title="Share on Facebook">
+                    <svg id="post-share-facebook" class="post-share-button">
+                        <use xlink:href="/imgs/svg.svg#svg-facebook" x="0" y="0" width="100%" height="100%"></use>
+                    </svg>
+                </a>
+                <a target="_blank" href="https://plus.google.com/share?url=https://cryptic.io/an-intro-to-functional-reactive-programming/" title="Share on Google">
+                    <svg id="post-share-google" class="post-share-button">
+                        <use xlink:href="/imgs/svg.svg#svg-google" x="0" y="0" width="100%" height="100%"></use>
+                    </svg>
+                </a>
+            </div>
+        </div>
+
+    </div>
+
+    <footer id="footer">
+
+        <h2 class="page-sub-header">Author</h2>
+
+        <div id="author">
+
+            <div class="member">
+
+    <div class="member-header">
+
+        <div class="member-author-avatar">
+            <img class="member-author-img" src="https://avatars2.githubusercontent.com/u/594035"/>
+        </div>
+
+        <div class="member-author-words">
+            <div class="member-author-name">
+                <span>Marco Polo</span>
+                <span class="member-author-username">marcopolo</span>
+            </div>
+            <p class="member-author-bio">Partially Functional</p>
+
+            <div class="member-author-companies">
+
+                <i class="fa fa-building-o"></i>
+
+                
+
+                
+
+                
+
+                    <a href="http://grooveshark.com/" class="company-link">Grooveshark</a>
+
+                
+
+                
+
+                
+
+                
+
+                
+
+                
+
+                
+
+                
+
+                
+
+                
+
+                
+
+                
+
+                
+
+                
+
+                
+
+                
+
+                
+
+                    <a href="http://getprismatic.com/home" class="company-link">Prismatic</a>
+
+                
+
+                
+
+                
+
+            </div>
+        </div>
+
+        <div class="member-author-socials">
+
+            
+            <a href="http://marcopolo.io/" class="member-author-social" title="Website of Marco Polo">
+                Website
+            </a>
+            
+
+            
+            <a href="mailto:marco@marcopolo.io" class="member-author-social" title="Email of Marco Polo">
+                Email
+            </a>
+            
+
+            
+            <a href="http://github.com/marcopolo" class="member-author-social" title="Github of Marco Polo">
+                Github
+            </a>
+            
+
+            
+            <a href="https://twitter.com/open_sourcery" class="member-author-social" title="Twitter of Marco Polo">
+                Twitter
+            </a>
+            
+
+            
+
+        </div>
+
+    </div>
+
+    <div class="member-related-posts">
+
+        <div class="member-related-posts-title">
+            <h2 class="member-related-posts-title-text">Posts by marcopolo</h2>
+        </div>
+
+        <ul class="member-related-posts-list">
+
+            
+
+            
+
+            <li class="member-related-post cf">
+                <i class="fa fa-angle-right"></i>
+                <a href="/an-intro-to-functional-reactive-programming/" title="An Intro to Functional Reactive Programming in UIs">
+                    <span>An Intro to Functional Reactive Programming in UIs</span>
+                </a>
+            </li>
+
+            
+
+            <li class="member-related-post cf">
+                <i class="fa fa-angle-right"></i>
+                <a href="/staticshowdown-postmortem/" title="Sock Singles, a post mortem on our static showdown entry">
+                    <span>Sock Singles, a post mortem on our static showdown entry</span>
+                </a>
+            </li>
+
+            
+
+        </ul>
+
+        <a class="member-related-posts-all-link" href="/tags#marcopolo" title="See all posts by marcopolo">See all posts by marcopolo</a>
+
+    </div>
+
+</div>
+
+
+        </div>
+
+        <h2 class="page-sub-header">Comments</h2>
+
+        <div id="disqus_thread"></div>
+
+    </footer>
+
+
+
+
+
+
+
+
+
+
+    </div>
+
+    <footer id="bottom-band" class="cf">
+
+    
+
+    <div id="bottom-recent" class="bottom-section">
+
+        <h2 class="recent-posts-title page-sub-header">Recent Posts</h2>
+
+        <ul class="recent-posts-list">
+
+            
+
+            
+
+            
+
+            <li class="recent-post cf">
+
+                <div class="recent-post-words">
+
+                    <div class="recent-post-title">
+
+                        <h4 class="recent-post-title-text">
+                            <a class="recent-post-title-text-link" href="/developing-gamepad-virtual-keyboard/" title="Considerations for developing a gamepad virtual keyboard, Part 1: The interface">
+                                Considerations for developing a gamepad virtual keyboard, Part 1: The interface
+                            </a>
+
+                            
+                            <a class="post-tag" href="/tags/" title="flux">#flux</a>
+                            
+                            <a class="post-tag" href="/tags/" title="daisywheeljs">#daisywheeljs</a>
+                            
+                            <a class="post-tag" href="/tags/" title="gamepad">#gamepad</a>
+                            
+                            <a class="post-tag" href="/tags/" title="html5">#html5</a>
+                            
+
+                        </h4>
+
+                    </div>
+
+                    <div class="recent-post-metadata">
+
+                        <span class="recent-post-authoring-info">
+                            <a href="/tags#likethemammal" class="recent-post-author-name" title="Chris Dolphin">Chris Dolphin</a>
+                            •
+                            <span class="recent-post-date">12 Sep 2015</span>
+                        </span>
+
+                    </div>
+
+                    <a class="recent-post-link" href="/developing-gamepad-virtual-keyboard/" title="Considerations for developing a gamepad virtual keyboard, Part 1: The interface"></a>
+
+                </div>
+
+                <div class="recent-post-author-avatar">
+                    <a href="/members#likethemammal" title="likethemammal">
+                        <img class="recent-post-author-img" src="https://avatars1.githubusercontent.com/u/3430841" alt="likethemammal Avatar Image" title="likethemammal"/>
+                    </a>
+                </div>
+
+            </li>
+
+            
+
+            
+
+            
+
+            
+
+            
+
+            
+
+            
+
+            
+
+            
+
+            
+
+            
+
+            <li class="recent-post cf">
+
+                <div class="recent-post-words">
+
+                    <div class="recent-post-title">
+
+                        <h4 class="recent-post-title-text">
+                            <a class="recent-post-title-text-link" href="/intro-to-daisywheeljs/" title="Adding the DaisywheelJS onscreen-keyboard to HTML5 Gamepad projects">
+                                Adding the DaisywheelJS onscreen-keyboard to HTML5 Gamepad projects
+                            </a>
+
+                            
+                            <a class="post-tag" href="/tags/" title="daisywheeljs">#daisywheeljs</a>
+                            
+                            <a class="post-tag" href="/tags/" title="daisywheel">#daisywheel</a>
+                            
+                            <a class="post-tag" href="/tags/" title="gamepad">#gamepad</a>
+                            
+                            <a class="post-tag" href="/tags/" title="html5">#html5</a>
+                            
+
+                        </h4>
+
+                    </div>
+
+                    <div class="recent-post-metadata">
+
+                        <span class="recent-post-authoring-info">
+                            <a href="/tags#likethemammal" class="recent-post-author-name" title="Chris Dolphin">Chris Dolphin</a>
+                            •
+                            <span class="recent-post-date">31 Aug 2015</span>
+                        </span>
+
+                    </div>
+
+                    <a class="recent-post-link" href="/intro-to-daisywheeljs/" title="Adding the DaisywheelJS onscreen-keyboard to HTML5 Gamepad projects"></a>
+
+                </div>
+
+                <div class="recent-post-author-avatar">
+                    <a href="/members#likethemammal" title="likethemammal">
+                        <img class="recent-post-author-img" src="https://avatars1.githubusercontent.com/u/3430841" alt="likethemammal Avatar Image" title="likethemammal"/>
+                    </a>
+                </div>
+
+            </li>
+
+            
+
+            
+
+            
+
+            
+
+            
+
+            
+
+            
+
+            
+
+            
+
+            
+
+            
+
+            
+
+            
+
+            <li class="recent-post cf">
+
+                <div class="recent-post-words">
+
+                    <div class="recent-post-title">
+
+                        <h4 class="recent-post-title-text">
+                            <a class="recent-post-title-text-link" href="/go-http/" title="Go's http package by example">
+                                Go's http package by example
+                            </a>
+
+                            
+                            <a class="post-tag" href="/tags/" title="golang">#golang</a>
+                            
+                            <a class="post-tag" href="/tags/" title="http">#http</a>
+                            
+                            <a class="post-tag" href="/tags/" title="middleware">#middleware</a>
+                            
+
+                        </h4>
+
+                    </div>
+
+                    <div class="recent-post-metadata">
+
+                        <span class="recent-post-authoring-info">
+                            <a href="/tags#mediocregopher" class="recent-post-author-name" title="Brian Picciano">Brian Picciano</a>
+                            •
+                            <span class="recent-post-date">15 Jul 2015</span>
+                        </span>
+
+                    </div>
+
+                    <a class="recent-post-link" href="/go-http/" title="Go's http package by example"></a>
+
+                </div>
+
+                <div class="recent-post-author-avatar">
+                    <a href="/members#mediocregopher" title="mediocregopher">
+                        <img class="recent-post-author-img" src="https://avatars.githubusercontent.com/u/933154" alt="mediocregopher Avatar Image" title="mediocregopher"/>
+                    </a>
+                </div>
+
+            </li>
+
+            
+
+            
+
+            
+
+            
+
+            
+
+            
+
+            
+
+            
+
+            
+
+            
+
+            
+
+            <li class="recent-post cf">
+
+                <div class="recent-post-words">
+
+                    <div class="recent-post-title">
+
+                        <h4 class="recent-post-title-text">
+                            <a class="recent-post-title-text-link" href="/rabbit-hole/" title="Rabbit Hole">
+                                Rabbit Hole
+                            </a>
+
+                            
+                            <a class="post-tag" href="/tags/" title="debug">#debug</a>
+                            
+                            <a class="post-tag" href="/tags/" title="php">#php</a>
+                            
+                            <a class="post-tag" href="/tags/" title="sysdig">#sysdig</a>
+                            
+                            <a class="post-tag" href="/tags/" title="dns">#dns</a>
+                            
+
+                        </h4>
+
+                    </div>
+
+                    <div class="recent-post-metadata">
+
+                        <span class="recent-post-authoring-info">
+                            <a href="/tags#mediocregopher" class="recent-post-author-name" title="Brian Picciano">Brian Picciano</a>
+                            •
+                            <span class="recent-post-date">11 Mar 2015</span>
+                        </span>
+
+                    </div>
+
+                    <a class="recent-post-link" href="/rabbit-hole/" title="Rabbit Hole"></a>
+
+                </div>
+
+                <div class="recent-post-author-avatar">
+                    <a href="/members#mediocregopher" title="mediocregopher">
+                        <img class="recent-post-author-img" src="https://avatars.githubusercontent.com/u/933154" alt="mediocregopher Avatar Image" title="mediocregopher"/>
+                    </a>
+                </div>
+
+            </li>
+
+            
+
+            
+
+            
+
+            
+
+            
+
+            
+
+            
+
+            
+
+            
+
+            
+
+            
+
+            <li class="recent-post cf">
+
+                <div class="recent-post-words">
+
+                    <div class="recent-post-title">
+
+                        <h4 class="recent-post-title-text">
+                            <a class="recent-post-title-text-link" href="/protip-sleep/" title="Protip - Bash Sleep">
+                                Protip - Bash Sleep
+                            </a>
+
+                            
+                            <a class="post-tag" href="/tags/" title="bash">#bash</a>
+                            
+                            <a class="post-tag" href="/tags/" title="protip">#protip</a>
+                            
+
+                        </h4>
+
+                    </div>
+
+                    <div class="recent-post-metadata">
+
+                        <span class="recent-post-authoring-info">
+                            <a href="/tags#mediocregopher" class="recent-post-author-name" title="Brian Picciano">Brian Picciano</a>
+                            •
+                            <span class="recent-post-date">01 Dec 2014</span>
+                        </span>
+
+                    </div>
+
+                    <a class="recent-post-link" href="/protip-sleep/" title="Protip - Bash Sleep"></a>
+
+                </div>
+
+                <div class="recent-post-author-avatar">
+                    <a href="/members#mediocregopher" title="mediocregopher">
+                        <img class="recent-post-author-img" src="https://avatars.githubusercontent.com/u/933154" alt="mediocregopher Avatar Image" title="mediocregopher"/>
+                    </a>
+                </div>
+
+            </li>
+
+            
+
+            
+
+            
+
+            
+
+            
+
+            
+
+            
+
+        </ul>
+
+    </div>
+
+    
+
+    <div id="bottom-tags" class="bottom-section">
+
+        <h2 class="page-sub-header">Tags</h2>
+
+        <ul id="bottom-tags-list">
+            
+            <li class="post-tag"><a href="/tags#aws" title="aws">#aws<span>(1)</span></a></li>
+            
+            <li class="post-tag"><a href="/tags#apache" title="apache">#apache<span>(1)</span></a></li>
+            
+            <li class="post-tag"><a href="/tags#bash" title="bash">#bash<span>(2)</span></a></li>
+            
+            <li class="post-tag"><a href="/tags#clojurescript" title="clojurescript">#clojurescript<span>(1)</span></a></li>
+            
+            <li class="post-tag"><a href="/tags#javascript" title="javascript">#javascript<span>(2)</span></a></li>
+            
+            <li class="post-tag"><a href="/tags#react" title="react">#react<span>(2)</span></a></li>
+            
+            <li class="post-tag"><a href="/tags#firebase" title="firebase">#firebase<span>(1)</span></a></li>
+            
+            <li class="post-tag"><a href="/tags#clojure" title="clojure">#clojure<span>(1)</span></a></li>
+            
+            <li class="post-tag"><a href="/tags#terrain" title="terrain">#terrain<span>(1)</span></a></li>
+            
+            <li class="post-tag"><a href="/tags#erlang" title="erlang">#erlang<span>(1)</span></a></li>
+            
+            <li class="post-tag"><a href="/tags#jekyll" title="jekyll">#jekyll<span>(2)</span></a></li>
+            
+            <li class="post-tag"><a href="/tags#github-pages" title="github-pages">#github-pages<span>(2)</span></a></li>
+            
+            <li class="post-tag"><a href="/tags#dev-blog" title="dev-blog">#dev-blog<span>(1)</span></a></li>
+            
+            <li class="post-tag"><a href="/tags#liquid" title="liquid">#liquid<span>(1)</span></a></li>
+            
+            <li class="post-tag"><a href="/tags#frp" title="frp">#frp<span>(1)</span></a></li>
+            
+            <li class="post-tag"><a href="/tags#functional" title="functional">#functional<span>(1)</span></a></li>
+            
+            <li class="post-tag"><a href="/tags#reactive" title="reactive">#reactive<span>(1)</span></a></li>
+            
+            <li class="post-tag"><a href="/tags#elm" title="elm">#elm<span>(1)</span></a></li>
+            
+            <li class="post-tag"><a href="/tags#om" title="om">#om<span>(1)</span></a></li>
+            
+            <li class="post-tag"><a href="/tags#protip" title="protip">#protip<span>(1)</span></a></li>
+            
+            <li class="post-tag"><a href="/tags#debug" title="debug">#debug<span>(1)</span></a></li>
+            
+            <li class="post-tag"><a href="/tags#php" title="php">#php<span>(1)</span></a></li>
+            
+            <li class="post-tag"><a href="/tags#sysdig" title="sysdig">#sysdig<span>(1)</span></a></li>
+            
+            <li class="post-tag"><a href="/tags#dns" title="dns">#dns<span>(1)</span></a></li>
+            
+            <li class="post-tag"><a href="/tags#golang" title="golang">#golang<span>(1)</span></a></li>
+            
+            <li class="post-tag"><a href="/tags#http" title="http">#http<span>(1)</span></a></li>
+            
+            <li class="post-tag"><a href="/tags#middleware" title="middleware">#middleware<span>(1)</span></a></li>
+            
+            <li class="post-tag"><a href="/tags#daisywheeljs" title="daisywheeljs">#daisywheeljs<span>(2)</span></a></li>
+            
+            <li class="post-tag"><a href="/tags#daisywheel" title="daisywheel">#daisywheel<span>(1)</span></a></li>
+            
+            <li class="post-tag"><a href="/tags#gamepad" title="gamepad">#gamepad<span>(2)</span></a></li>
+            
+            <li class="post-tag"><a href="/tags#html5" title="html5">#html5<span>(2)</span></a></li>
+            
+            <li class="post-tag"><a href="/tags#flux" title="flux">#flux<span>(1)</span></a></li>
+            
+        </ul>
+
+    </div>
+</footer>
+
+<div id="copyright-band">
+
+    <small id="copyright">Designed by <a href="http://likethemammal.com" title="Chris Dolphin's Personal Site">Chris Dolphin</a> and hosted on <a href="http://github.com/cryptic-io/cryptic-chat/" title="Cryptic IO Github Repo">Github</a></small>
+
+</div>
+
+
+  </body>
+
+  
+
+    <script type="text/javascript">
+    var parent = (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]);
+    var disqus_shortname = 'crypticio'; // required: replace example with your forum shortname
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        parent.appendChild(dsq);
+    })();
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function () {
+        var s = document.createElement('script'); s.async = true;
+        s.type = 'text/javascript';
+        s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+        parent.appendChild(s);
+    }());
+</script>
+
+
+  
+
+  <script>
+    console.log(' \
+           ▄▄▀▀▀▀▀▀▀▀▀▄▄             \n \
+████▄   ▄█▀             ▀▀▄   ▄▄███▀ \n \
+   ▀████▌                  ████▀▀    \n \
+      █▀███▄▄          ▄████▀▌       \n \
+     █    ▀▀███▄▄▄▄▄████▀    █       \n \
+     █        ▀██████▀       ▐▌      \n \
+     █         ▀███▀         ▐       \n \
+     ▐▌         ▐██          █       \n \
+      ▐█        ▐██        ▄█        \n \
+        ▀▄      ▐██       █▀         \n \
+          ▀▀▄▄  ▐██   ▄▄▀            \n \
+              ▀▀▐██▀▀                \n \
+                ▐██                  \n \
+                ▐██                  \n \
+                ▐██                  \
+');
+  </script>
+</html>

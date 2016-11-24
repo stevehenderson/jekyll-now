@@ -1,0 +1,1050 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <link rel="icon" href="/favicon.ico" sizes="32x32" type="image/x-icon">
+
+    <!--  Apple  -->
+    <link rel="apple-touch-icon-precomposed" href="/imgs/favicon/apple-touch-icon-precomposed.png">
+
+    <!--  Microsoft  -->
+    <meta name="msapplication-TileColor" content="#D8F0CC">
+    <meta name="msapplication-TileImage" content="/imgs/favicon/tileicon.png">
+
+    <!-- General page specifics -->
+
+    <!-- title variable -->
+    
+
+        
+
+    
+
+    <!-- url variable -->
+    
+
+        
+
+    
+
+    <!-- author variable -->
+    
+
+        
+
+    
+
+    <!-- keywords variable -->
+    
+
+    <title>Erlang Pitfalls | Cryptic Chat</title>
+    <meta name="description" content="We are a group of developers involved in the tech industry that work, laugh, discover, and grow together. We encourage each other to push the boundaries of the technology we work with everyday. To help reach our personal goals we collaborating often and want others to share in this  experience.
+">
+    <meta name="keywords" content="                                    erlang,                        ">
+    <meta name="author" content="Chris Dolphin">
+
+    <!-- Facebook page specifics -->
+    <meta property="og:title" content="Erlang Pitfalls | Cryptic Chat">
+    <meta property="og:description" content="We are a group of developers involved in the tech industry that work, laugh, discover, and grow together. We encourage each other to push the boundaries of the technology we work with everyday. To help reach our personal goals we collaborating often and want others to share in this  experience.
+">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Cryptic Chat">
+    <meta property="og:image" content="">
+
+    <!-- Twitter page specifics -->
+    <meta name="twitter:title" content="Erlang Pitfalls | Cryptic Chat">
+    <meta name="twitter:description" content="We are a group of developers involved in the tech industry that work, laugh, discover, and grow together. We encourage each other to push the boundaries of the technology we work with everyday. To help reach our personal goals we collaborating often and want others to share in this  experience.
+">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:url" content="/erlang-pitfalls/">
+    <meta name="twitter:site" content="@likethemammal">
+    <meta name="twitter:image" content="">
+
+
+    <link rel="stylesheet" href="/styles.css">
+    <link rel="canonical" href="https://cryptic.io/erlang-pitfalls/">
+
+    <link href="//fonts.googleapis.com/css?family=Open+Sans:400italic,400,600" rel="stylesheet" type="text/css">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+
+    <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-37560411-4', 'auto');
+    ga('require', 'displayfeatures');
+    ga('send', 'pageview');
+
+</script>
+
+</head>
+
+
+  
+
+  <body>
+
+  
+
+    <div id="nav-band">
+    <div id="nav">
+        <a id="logo" href="/">
+            <i class="fa fa-users"></i>
+            Cryptic: chat
+        </a>
+
+        <nav id="desktop-nav">
+            <a class="nav-item" href="/search" title="Search">Search</a>
+            <a class="nav-item" href="/tags" title="Tags">Tags</a>
+            <a class="nav-item" href="/members" title="Members">Members</a>
+            <a class="nav-item" href="http://github.com/cryptic-io/cryptic-chat/" title="Github Repo">Github</a>
+            <a class="nav-item" href="/about" title="About">About</a>
+            <a class="nav-item" href="/" title="Blog">Blog</a>
+        </nav>
+
+        <input id="mobile-nav-open" class="mobile-nav-toggle" type="text" readonly>
+        <input id="mobile-nav-close" class="mobile-nav-toggle" type="text" readonly>
+
+        <nav id="mobile-nav">
+            <a class="nav-item" href="/" title="Blog">Blog</a>
+            <a class="nav-item" href="/about" title="About">About</a>
+            <a class="nav-item" href="http://github.com/cryptic-io/cryptic-chat/" title="Github Repo">Github</a>
+            <a class="nav-item" href="/members" title="Members">Members</a>
+            <a class="nav-item" href="/tags" title="Tags">Tags</a>
+            <a class="nav-item" href="/search" title="Search">Search</a>
+        </nav>
+
+    </div>
+</div>
+
+
+    <div id="main">
+
+        
+
+
+
+
+
+
+
+    <div id="post">
+
+        <header id="post-header" class="cf">
+
+            <a href="#author" title="Author">
+                <div id="post-author-avatar">
+                    <img id="post-author-img-bg" src="https://avatars.githubusercontent.com/u/933154" alt="Brian Picciano background" title="Brian Picciano background"/>
+                    <img id="post-author-img" src="https://avatars.githubusercontent.com/u/933154" alt="Brian Picciano Avatar Image" title="Brian Picciano"/>
+                </div>
+            </a>
+
+            <div id="post-header-words">
+
+                <h1 id="post-title">
+
+                    <span id="post-title-text">
+                        Erlang Pitfalls
+                    </span>
+
+                    <div id="post-tags">
+                        
+                            <a class="post-tag" href="/tags#erlang" title="erlang">#erlang</a>
+                        
+                    </div>
+                </h1>
+
+                <div id="post-metadata">
+                    <span id="post-date">Oct 29, 2014</span>
+                    •
+                    <a id="disqus-num-comments" href="#disqus_thread" title="To the comments">0 comments</a>
+                </div>
+
+            </div>
+
+        </header>
+
+        <div id="post-assets">
+
+            
+
+            
+
+        </div>
+
+        
+
+        <article id="post-content">
+
+            <h1>Erlang Pitfalls</h1>
+
+<p>I&#39;ve been involved with a large-ish scale erlang project at Grooveshark since
+sometime around 2011. I started this project knowing absolutely nothing about
+erlang, but now I feel I have accumulated enough knowlege over time that I could
+conceivably give some back. Specifically, common pitfalls that people may run
+into when designing and writing a large-scale erlang application. Some of these
+may show up when searching for them, but some of them you may not even know you
+need to search for.</p>
+
+<h2>now() vs timestamp()</h2>
+
+<p>The cononical way of getting the current timestamp in erlang is to use
+<code>erlang:now()</code>. This works great at small loads, but if you find your
+application slowing down greatly at highly parallel loads and you&#39;re calling
+<code>erlang:now()</code> a lot, it may be the culprit.</p>
+
+<p>A property of this method you may not realize is that it is monotonically
+increasing, meaning even if two processes call it at the <em>exact</em> same time they
+will both receive different output. This is done through some locking on the
+low-level, as well as a bit of math to balance out the time getting out of sync
+in the scenario.</p>
+
+<p>There are situations where fetching always unique timestamps is useful, such as
+seeding RNGs and generating unique identifiers for things, but usually when
+people fetch a timestamp they just want a timestamp. For these cases,
+<code>os:timestamp()</code> can be used. It is not blocked by any locks, it simply returns
+the time.</p>
+
+<h2>The rpc module is slow</h2>
+
+<p>The built-in <code>rpc</code> module is slower than you&#39;d think. This mostly stems from it
+doing a lot of extra work for every <code>call</code> and <code>cast</code> that you do, ensuring that
+certain conditions are accounted for. If, however, it&#39;s sufficient for the
+calling side to know that a call timed-out on them and not worry about it any
+further you may benefit from simply writing your own rpc module. Alternatively,
+use <a href="https://github.com/cloudant/rexi">one which already exists</a>.</p>
+
+<h2>Don&#39;t send anonymous functions between nodes</h2>
+
+<p>One of erlang&#39;s niceties is transparent message sending between two phsyical
+erlang nodes. Once nodes are connected, a process on one can send any message to
+a process on the other exactly as if they existed on the same node. This is fine
+for many data-types, but for anonymous functions it should be avoided.</p>
+
+<p>For example:</p>
+<div class="highlight"><pre><code class="language-erlang" data-lang="erlang"><span class="nv">RemotePid</span> <span class="o">!</span> <span class="p">{</span><span class="n">fn</span><span class="p">,</span> <span class="k">fun</span><span class="p">(</span><span class="nv">I</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nv">I</span> <span class="o">+</span> <span class="mi">1</span> <span class="k">end</span><span class="p">}.</span>
+</code></pre></div>
+<p>Would be better written as</p>
+<div class="highlight"><pre><code class="language-erlang" data-lang="erlang"><span class="nf">incr</span><span class="p">(</span><span class="nv">I</span><span class="p">)</span> <span class="o">-&gt;</span>
+    <span class="nv">I</span> <span class="o">+</span> <span class="mi">1</span><span class="p">.</span>
+
+<span class="nv">RemotePid</span> <span class="o">!</span> <span class="p">{</span><span class="n">fn</span><span class="p">,</span> <span class="o">?</span><span class="nv">MODULE</span><span class="p">,</span> <span class="n">incr</span><span class="p">}.</span>
+</code></pre></div>
+<p>and then using an <code>apply</code> on the RemotePid to actually execute the function.</p>
+
+<p>This is because hot-swapping code messes with anonymous functions quite a bit.
+Erlang isn&#39;t actually sending a function definition across the wire; it&#39;s simply
+sending a reference to a function. If you&#39;ve changed the code within the
+anonymous function on a node, that reference changes. The sending node is
+sending a reference to a function which may not exist anymore on the receiving
+node, and you&#39;ll get a weird error which Google doesn&#39;t return many results for.</p>
+
+<p>Alternatively, if you simply send atoms across the wire and use <code>apply</code> on the
+other side, only atoms are sent and the two nodes involved can have totally
+different ideas of what the function itself does without any problems.</p>
+
+<h2>Hot-swapping code is a convenience, not a crutch</h2>
+
+<p>Hot swapping code is the bees-knees. It lets you not have to worry about
+rolling-restarts for trivial code changes, and so adds stability to your
+cluster. My warning is that you should not rely on it. If your cluster can&#39;t
+survive a node being restarted for a code change, then it can&#39;t survive if that
+node fails completely, or fails and comes back up. Design your system pretending
+that hot-swapping does not exist, and only once you&#39;ve done that allow yourself
+to use it.</p>
+
+<h2>GC sometimes needs a boost</h2>
+
+<p>Erlang garbage collection (GC) acts on a per-erlang-process basis, meaning that
+each process decides on its own to garbage collect itself. This is nice because
+it means stop-the-world isn&#39;t a problem, but it does have some interesting
+effects.</p>
+
+<p>We had a problem with our node memory graphs looking like an upwards facing
+line, instead of a nice sinusoid relative to the number of connections during
+the day. We couldn&#39;t find a memory leak <em>anywhere</em>, and so started profiling. We
+found that the memory seemed to be comprised of mostly binary data in process
+heaps. On a hunch my coworker Mike Cugini (who gets all the credit for this) ran
+the following on a node:</p>
+<div class="highlight"><pre><code class="language-erlang" data-lang="erlang"><span class="nn">lists</span><span class="p">:</span><span class="nf">foreach</span><span class="p">(</span><span class="nn">erlang</span><span class="p">:</span><span class="nb">garbage_collect</span><span class="o">/</span><span class="mi">1</span><span class="p">,</span> <span class="nn">erlang</span><span class="p">:</span><span class="nf">processes</span><span class="p">()).</span>
+</code></pre></div>
+<p>and saw memory drop in a huge way. We made that code run every 10 minutes or so
+and suddenly our memory problem went away.</p>
+
+<p>The problem is that we had a lot of processes which individually didn&#39;t have
+much heap data, but all-together were crushing the box. Each didn&#39;t think it had
+enough to garbage collect very often, so memory just kept going up. Calling the
+above forces all processes to garbage collect, and thus throw away all those
+little binary bits they were hoarding.</p>
+
+<h2>These aren&#39;t the solutions you are looking for</h2>
+
+<p>The <code>erl</code> process has tons of command-line options which allow you to tweak all
+kinds of knobs. We&#39;ve had tons of performance problems with our application, as
+of yet not a single one has been solved with turning one of these knobs. They&#39;ve
+all been design issues or just run-of-the-mill bugs. I&#39;m not saying the knobs
+are <em>never</em> useful, but I haven&#39;t seen it yet.</p>
+
+<h2>Erlang processes are great, except when they&#39;re not</h2>
+
+<p>The erlang model of allowing processes to manage global state works really well
+in many cases. Possibly even most cases. There are, however, times when it
+becomes a performance problem. This became apparent in the project I was working
+on for Grooveshark, which was, at its heart, a pubsub server.</p>
+
+<p>The architecture was very simple: each channel was managed by a process, client
+connection processes subscribed to that channel and received publishes from it.
+Easy right? The problem was that extremely high volume channels were simply not
+able to keep up with the load. The channel process could do certain things very
+fast, but there were some operations which simply took time and slowed
+everything down. For example, channels could have arbitrary properties set on
+them by their owners. Retrieving an arbitrary property from a channel was a
+fairly fast operation: client <code>call</code>s the channel process, channel process
+immediately responds with the property value. No blocking involved.</p>
+
+<p>But as soon as there was any kind of call which required the channel process to
+talk to yet <em>another</em> process (unfortunately necessary), things got hairy. On
+high volume channels publishes/gets/set operations would get massively backed up
+in the message queue while the process was blocked on another process. We tried
+many things, but ultimately gave up on the process-per-channel approach.</p>
+
+<p>We instead decided on keeping <em>all</em> channel state in a transactional database.
+When client processes &quot;called&quot; operations on a channel, they really are just
+acting on the database data inline, no message passing involved. This means that
+read-only operations are super-fast because there is minimal blocking, and if
+some random other process is being slow it only affects the one client making
+the call which is causing it to be slow, and not holding up a whole host of
+other clients.</p>
+
+<h2>Mnesia might not be what you want</h2>
+
+<p>This one is probably a bit controversial, and definitely subject to use-cases.
+Do your own testing and profiling, find out what&#39;s right for you.</p>
+
+<p>Mnesia is erlang&#39;s solution for global state. It&#39;s an in-memory transactional
+database which can scale to N nodes and persist to disk. It is hosted
+directly in the erlang processes memory so you interact with it in erlang
+directly in your code; no calling out to database drivers and such. Sounds great
+right?</p>
+
+<p>Unfortunately mnesia is not a very full-featured database. It is essentially a
+key-value store which can hold arbitrary erlang data-types, albeit in a set
+schema which you lay out for it during startup. This means that more complex
+types like sorted sets and hash maps (although this was addressed with the
+introduction of the map data-type in R17) are difficult to work with within
+mnesia. Additionally, erlang&#39;s data model of immutability, while awesome
+usually, can bite you here because it&#39;s difficult (impossible?) to pull out
+chunks of data within a record without accessing the whole record.</p>
+
+<p>For example, when retrieving the list of processes subscribed to a channel our
+application doesn&#39;t simply pull the full list and iterate over it. This is too
+slow, and in some cases the subscriber list was so large it wasn&#39;t actually
+feasible. The channel process wasn&#39;t cleaning up its heap fast enough, so
+multiple publishes would end up with multiple copies of the giant list in
+memory. This became a problem. Instead we chain spawned processes, each of which
+pull a set chunk of the subsciber list, and iterate over that. This is very
+difficult to implement in mnesia without pulling the full subscriber list into
+the process&#39; memory at some point in the process.</p>
+
+<p>It is, however, fairly trivial to implement in redis using sorted sets. For this
+case, and many other cases after, the motto for performance improvements became
+&quot;stick it in redis&quot;. The application is at the point where <em>all</em> state which
+isn&#39;t directly tied to a specific connection is kept in redis, encoded using
+<code>term_to_binary</code>. The performance hit of going to an outside process for data
+was actually much less than we&#39;d originally thought, and ended up being a plus
+since we had much more freedom to do interesting hacks to speedup up our
+accesses.</p>
+
+
+        </article>
+
+        <div id="post-share">
+            <p id="post-share-cta">Did you like this article? Share it!</p>
+            <div id="post-share-buttons">
+                <a target="_blank" href="https://twitter.com/home?status=Erlang Pitfalls https://cryptic.io/erlang-pitfalls/" title="Share on Twitter">
+                    <svg id="post-share-twitter" class="post-share-button">
+                        <use xlink:href="/imgs/svg.svg#svg-twitter" x="0" y="0" width="100%" height="100%"></use>
+                    </svg>
+                </a>
+                <a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://cryptic.io/erlang-pitfalls/" title="Share on Facebook">
+                    <svg id="post-share-facebook" class="post-share-button">
+                        <use xlink:href="/imgs/svg.svg#svg-facebook" x="0" y="0" width="100%" height="100%"></use>
+                    </svg>
+                </a>
+                <a target="_blank" href="https://plus.google.com/share?url=https://cryptic.io/erlang-pitfalls/" title="Share on Google">
+                    <svg id="post-share-google" class="post-share-button">
+                        <use xlink:href="/imgs/svg.svg#svg-google" x="0" y="0" width="100%" height="100%"></use>
+                    </svg>
+                </a>
+            </div>
+        </div>
+
+    </div>
+
+    <footer id="footer">
+
+        <h2 class="page-sub-header">Author</h2>
+
+        <div id="author">
+
+            <div class="member">
+
+    <div class="member-header">
+
+        <div class="member-author-avatar">
+            <img class="member-author-img" src="https://avatars.githubusercontent.com/u/933154"/>
+        </div>
+
+        <div class="member-author-words">
+            <div class="member-author-name">
+                <span>Brian Picciano</span>
+                <span class="member-author-username">mediocregopher</span>
+            </div>
+            <p class="member-author-bio">Coding, climbing, longboarding, movie watcher, ginger. I love go, clojure, redis, and sometimes erlang.</p>
+
+            <div class="member-author-companies">
+
+                <i class="fa fa-building-o"></i>
+
+                
+
+                
+
+                
+
+                    <a href="http://grooveshark.com/" class="company-link">Grooveshark</a>
+
+                
+
+                
+
+                
+
+                
+
+                
+
+                
+
+                
+
+                
+
+                
+
+            </div>
+        </div>
+
+        <div class="member-author-socials">
+
+            
+            <a href="http://mediocregopher.com" class="member-author-social" title="Website of Brian Picciano">
+                Website
+            </a>
+            
+
+            
+            <a href="mailto:mediocregopher@gmail.com" class="member-author-social" title="Email of Brian Picciano">
+                Email
+            </a>
+            
+
+            
+            <a href="http://github.com/mediocregopher" class="member-author-social" title="Github of Brian Picciano">
+                Github
+            </a>
+            
+
+            
+            <a href="https://twitter.com/mediocre_gopher" class="member-author-social" title="Twitter of Brian Picciano">
+                Twitter
+            </a>
+            
+
+            
+
+        </div>
+
+    </div>
+
+    <div class="member-related-posts">
+
+        <div class="member-related-posts-title">
+            <h2 class="member-related-posts-title-text">Posts by mediocregopher</h2>
+        </div>
+
+        <ul class="member-related-posts-list">
+
+            
+
+            
+
+            <li class="member-related-post cf">
+                <i class="fa fa-angle-right"></i>
+                <a href="/go-http/" title="Go's http package by example">
+                    <span>Go's http package by example</span>
+                </a>
+            </li>
+
+            
+
+            <li class="member-related-post cf">
+                <i class="fa fa-angle-right"></i>
+                <a href="/rabbit-hole/" title="Rabbit Hole">
+                    <span>Rabbit Hole</span>
+                </a>
+            </li>
+
+            
+
+            <li class="member-related-post cf">
+                <i class="fa fa-angle-right"></i>
+                <a href="/protip-sleep/" title="Protip - Bash Sleep">
+                    <span>Protip - Bash Sleep</span>
+                </a>
+            </li>
+
+            
+
+            <li class="member-related-post cf">
+                <i class="fa fa-angle-right"></i>
+                <a href="/erlang-pitfalls/" title="Erlang Pitfalls">
+                    <span>Erlang Pitfalls</span>
+                </a>
+            </li>
+
+            
+
+            <li class="member-related-post cf">
+                <i class="fa fa-angle-right"></i>
+                <a href="/clojure-diamond-square/" title="Random Terrain Generation, A Clojure Walkthrough">
+                    <span>Random Terrain Generation, A Clojure Walkthrough</span>
+                </a>
+            </li>
+
+            
+
+        </ul>
+
+        <a class="member-related-posts-all-link" href="/tags#mediocregopher" title="See all posts by mediocregopher">See all posts by mediocregopher</a>
+
+    </div>
+
+</div>
+
+
+        </div>
+
+        <h2 class="page-sub-header">Comments</h2>
+
+        <div id="disqus_thread"></div>
+
+    </footer>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </div>
+
+    <footer id="bottom-band" class="cf">
+
+    
+
+    <div id="bottom-recent" class="bottom-section">
+
+        <h2 class="recent-posts-title page-sub-header">Recent Posts</h2>
+
+        <ul class="recent-posts-list">
+
+            
+
+            
+
+            
+
+            <li class="recent-post cf">
+
+                <div class="recent-post-words">
+
+                    <div class="recent-post-title">
+
+                        <h4 class="recent-post-title-text">
+                            <a class="recent-post-title-text-link" href="/developing-gamepad-virtual-keyboard/" title="Considerations for developing a gamepad virtual keyboard, Part 1: The interface">
+                                Considerations for developing a gamepad virtual keyboard, Part 1: The interface
+                            </a>
+
+                            
+                            <a class="post-tag" href="/tags/" title="flux">#flux</a>
+                            
+                            <a class="post-tag" href="/tags/" title="daisywheeljs">#daisywheeljs</a>
+                            
+                            <a class="post-tag" href="/tags/" title="gamepad">#gamepad</a>
+                            
+                            <a class="post-tag" href="/tags/" title="html5">#html5</a>
+                            
+
+                        </h4>
+
+                    </div>
+
+                    <div class="recent-post-metadata">
+
+                        <span class="recent-post-authoring-info">
+                            <a href="/tags#likethemammal" class="recent-post-author-name" title="Chris Dolphin">Chris Dolphin</a>
+                            •
+                            <span class="recent-post-date">12 Sep 2015</span>
+                        </span>
+
+                    </div>
+
+                    <a class="recent-post-link" href="/developing-gamepad-virtual-keyboard/" title="Considerations for developing a gamepad virtual keyboard, Part 1: The interface"></a>
+
+                </div>
+
+                <div class="recent-post-author-avatar">
+                    <a href="/members#likethemammal" title="likethemammal">
+                        <img class="recent-post-author-img" src="https://avatars1.githubusercontent.com/u/3430841" alt="likethemammal Avatar Image" title="likethemammal"/>
+                    </a>
+                </div>
+
+            </li>
+
+            
+
+            
+
+            
+
+            
+
+            
+
+            
+
+            
+
+            
+
+            
+
+            
+
+            
+
+            <li class="recent-post cf">
+
+                <div class="recent-post-words">
+
+                    <div class="recent-post-title">
+
+                        <h4 class="recent-post-title-text">
+                            <a class="recent-post-title-text-link" href="/intro-to-daisywheeljs/" title="Adding the DaisywheelJS onscreen-keyboard to HTML5 Gamepad projects">
+                                Adding the DaisywheelJS onscreen-keyboard to HTML5 Gamepad projects
+                            </a>
+
+                            
+                            <a class="post-tag" href="/tags/" title="daisywheeljs">#daisywheeljs</a>
+                            
+                            <a class="post-tag" href="/tags/" title="daisywheel">#daisywheel</a>
+                            
+                            <a class="post-tag" href="/tags/" title="gamepad">#gamepad</a>
+                            
+                            <a class="post-tag" href="/tags/" title="html5">#html5</a>
+                            
+
+                        </h4>
+
+                    </div>
+
+                    <div class="recent-post-metadata">
+
+                        <span class="recent-post-authoring-info">
+                            <a href="/tags#likethemammal" class="recent-post-author-name" title="Chris Dolphin">Chris Dolphin</a>
+                            •
+                            <span class="recent-post-date">31 Aug 2015</span>
+                        </span>
+
+                    </div>
+
+                    <a class="recent-post-link" href="/intro-to-daisywheeljs/" title="Adding the DaisywheelJS onscreen-keyboard to HTML5 Gamepad projects"></a>
+
+                </div>
+
+                <div class="recent-post-author-avatar">
+                    <a href="/members#likethemammal" title="likethemammal">
+                        <img class="recent-post-author-img" src="https://avatars1.githubusercontent.com/u/3430841" alt="likethemammal Avatar Image" title="likethemammal"/>
+                    </a>
+                </div>
+
+            </li>
+
+            
+
+            
+
+            
+
+            
+
+            
+
+            
+
+            
+
+            
+
+            
+
+            
+
+            
+
+            
+
+            
+
+            <li class="recent-post cf">
+
+                <div class="recent-post-words">
+
+                    <div class="recent-post-title">
+
+                        <h4 class="recent-post-title-text">
+                            <a class="recent-post-title-text-link" href="/go-http/" title="Go's http package by example">
+                                Go's http package by example
+                            </a>
+
+                            
+                            <a class="post-tag" href="/tags/" title="golang">#golang</a>
+                            
+                            <a class="post-tag" href="/tags/" title="http">#http</a>
+                            
+                            <a class="post-tag" href="/tags/" title="middleware">#middleware</a>
+                            
+
+                        </h4>
+
+                    </div>
+
+                    <div class="recent-post-metadata">
+
+                        <span class="recent-post-authoring-info">
+                            <a href="/tags#mediocregopher" class="recent-post-author-name" title="Brian Picciano">Brian Picciano</a>
+                            •
+                            <span class="recent-post-date">15 Jul 2015</span>
+                        </span>
+
+                    </div>
+
+                    <a class="recent-post-link" href="/go-http/" title="Go's http package by example"></a>
+
+                </div>
+
+                <div class="recent-post-author-avatar">
+                    <a href="/members#mediocregopher" title="mediocregopher">
+                        <img class="recent-post-author-img" src="https://avatars.githubusercontent.com/u/933154" alt="mediocregopher Avatar Image" title="mediocregopher"/>
+                    </a>
+                </div>
+
+            </li>
+
+            
+
+            
+
+            
+
+            
+
+            
+
+            
+
+            
+
+            
+
+            
+
+            
+
+            
+
+            <li class="recent-post cf">
+
+                <div class="recent-post-words">
+
+                    <div class="recent-post-title">
+
+                        <h4 class="recent-post-title-text">
+                            <a class="recent-post-title-text-link" href="/rabbit-hole/" title="Rabbit Hole">
+                                Rabbit Hole
+                            </a>
+
+                            
+                            <a class="post-tag" href="/tags/" title="debug">#debug</a>
+                            
+                            <a class="post-tag" href="/tags/" title="php">#php</a>
+                            
+                            <a class="post-tag" href="/tags/" title="sysdig">#sysdig</a>
+                            
+                            <a class="post-tag" href="/tags/" title="dns">#dns</a>
+                            
+
+                        </h4>
+
+                    </div>
+
+                    <div class="recent-post-metadata">
+
+                        <span class="recent-post-authoring-info">
+                            <a href="/tags#mediocregopher" class="recent-post-author-name" title="Brian Picciano">Brian Picciano</a>
+                            •
+                            <span class="recent-post-date">11 Mar 2015</span>
+                        </span>
+
+                    </div>
+
+                    <a class="recent-post-link" href="/rabbit-hole/" title="Rabbit Hole"></a>
+
+                </div>
+
+                <div class="recent-post-author-avatar">
+                    <a href="/members#mediocregopher" title="mediocregopher">
+                        <img class="recent-post-author-img" src="https://avatars.githubusercontent.com/u/933154" alt="mediocregopher Avatar Image" title="mediocregopher"/>
+                    </a>
+                </div>
+
+            </li>
+
+            
+
+            
+
+            
+
+            
+
+            
+
+            
+
+            
+
+            
+
+            
+
+            
+
+            
+
+            <li class="recent-post cf">
+
+                <div class="recent-post-words">
+
+                    <div class="recent-post-title">
+
+                        <h4 class="recent-post-title-text">
+                            <a class="recent-post-title-text-link" href="/protip-sleep/" title="Protip - Bash Sleep">
+                                Protip - Bash Sleep
+                            </a>
+
+                            
+                            <a class="post-tag" href="/tags/" title="bash">#bash</a>
+                            
+                            <a class="post-tag" href="/tags/" title="protip">#protip</a>
+                            
+
+                        </h4>
+
+                    </div>
+
+                    <div class="recent-post-metadata">
+
+                        <span class="recent-post-authoring-info">
+                            <a href="/tags#mediocregopher" class="recent-post-author-name" title="Brian Picciano">Brian Picciano</a>
+                            •
+                            <span class="recent-post-date">01 Dec 2014</span>
+                        </span>
+
+                    </div>
+
+                    <a class="recent-post-link" href="/protip-sleep/" title="Protip - Bash Sleep"></a>
+
+                </div>
+
+                <div class="recent-post-author-avatar">
+                    <a href="/members#mediocregopher" title="mediocregopher">
+                        <img class="recent-post-author-img" src="https://avatars.githubusercontent.com/u/933154" alt="mediocregopher Avatar Image" title="mediocregopher"/>
+                    </a>
+                </div>
+
+            </li>
+
+            
+
+            
+
+            
+
+            
+
+            
+
+            
+
+            
+
+        </ul>
+
+    </div>
+
+    
+
+    <div id="bottom-tags" class="bottom-section">
+
+        <h2 class="page-sub-header">Tags</h2>
+
+        <ul id="bottom-tags-list">
+            
+            <li class="post-tag"><a href="/tags#aws" title="aws">#aws<span>(1)</span></a></li>
+            
+            <li class="post-tag"><a href="/tags#apache" title="apache">#apache<span>(1)</span></a></li>
+            
+            <li class="post-tag"><a href="/tags#bash" title="bash">#bash<span>(2)</span></a></li>
+            
+            <li class="post-tag"><a href="/tags#clojurescript" title="clojurescript">#clojurescript<span>(1)</span></a></li>
+            
+            <li class="post-tag"><a href="/tags#javascript" title="javascript">#javascript<span>(2)</span></a></li>
+            
+            <li class="post-tag"><a href="/tags#react" title="react">#react<span>(2)</span></a></li>
+            
+            <li class="post-tag"><a href="/tags#firebase" title="firebase">#firebase<span>(1)</span></a></li>
+            
+            <li class="post-tag"><a href="/tags#clojure" title="clojure">#clojure<span>(1)</span></a></li>
+            
+            <li class="post-tag"><a href="/tags#terrain" title="terrain">#terrain<span>(1)</span></a></li>
+            
+            <li class="post-tag"><a href="/tags#erlang" title="erlang">#erlang<span>(1)</span></a></li>
+            
+            <li class="post-tag"><a href="/tags#jekyll" title="jekyll">#jekyll<span>(2)</span></a></li>
+            
+            <li class="post-tag"><a href="/tags#github-pages" title="github-pages">#github-pages<span>(2)</span></a></li>
+            
+            <li class="post-tag"><a href="/tags#dev-blog" title="dev-blog">#dev-blog<span>(1)</span></a></li>
+            
+            <li class="post-tag"><a href="/tags#liquid" title="liquid">#liquid<span>(1)</span></a></li>
+            
+            <li class="post-tag"><a href="/tags#frp" title="frp">#frp<span>(1)</span></a></li>
+            
+            <li class="post-tag"><a href="/tags#functional" title="functional">#functional<span>(1)</span></a></li>
+            
+            <li class="post-tag"><a href="/tags#reactive" title="reactive">#reactive<span>(1)</span></a></li>
+            
+            <li class="post-tag"><a href="/tags#elm" title="elm">#elm<span>(1)</span></a></li>
+            
+            <li class="post-tag"><a href="/tags#om" title="om">#om<span>(1)</span></a></li>
+            
+            <li class="post-tag"><a href="/tags#protip" title="protip">#protip<span>(1)</span></a></li>
+            
+            <li class="post-tag"><a href="/tags#debug" title="debug">#debug<span>(1)</span></a></li>
+            
+            <li class="post-tag"><a href="/tags#php" title="php">#php<span>(1)</span></a></li>
+            
+            <li class="post-tag"><a href="/tags#sysdig" title="sysdig">#sysdig<span>(1)</span></a></li>
+            
+            <li class="post-tag"><a href="/tags#dns" title="dns">#dns<span>(1)</span></a></li>
+            
+            <li class="post-tag"><a href="/tags#golang" title="golang">#golang<span>(1)</span></a></li>
+            
+            <li class="post-tag"><a href="/tags#http" title="http">#http<span>(1)</span></a></li>
+            
+            <li class="post-tag"><a href="/tags#middleware" title="middleware">#middleware<span>(1)</span></a></li>
+            
+            <li class="post-tag"><a href="/tags#daisywheeljs" title="daisywheeljs">#daisywheeljs<span>(2)</span></a></li>
+            
+            <li class="post-tag"><a href="/tags#daisywheel" title="daisywheel">#daisywheel<span>(1)</span></a></li>
+            
+            <li class="post-tag"><a href="/tags#gamepad" title="gamepad">#gamepad<span>(2)</span></a></li>
+            
+            <li class="post-tag"><a href="/tags#html5" title="html5">#html5<span>(2)</span></a></li>
+            
+            <li class="post-tag"><a href="/tags#flux" title="flux">#flux<span>(1)</span></a></li>
+            
+        </ul>
+
+    </div>
+</footer>
+
+<div id="copyright-band">
+
+    <small id="copyright">Designed by <a href="http://likethemammal.com" title="Chris Dolphin's Personal Site">Chris Dolphin</a> and hosted on <a href="http://github.com/cryptic-io/cryptic-chat/" title="Cryptic IO Github Repo">Github</a></small>
+
+</div>
+
+
+  </body>
+
+  
+
+    <script type="text/javascript">
+    var parent = (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]);
+    var disqus_shortname = 'crypticio'; // required: replace example with your forum shortname
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        parent.appendChild(dsq);
+    })();
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function () {
+        var s = document.createElement('script'); s.async = true;
+        s.type = 'text/javascript';
+        s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+        parent.appendChild(s);
+    }());
+</script>
+
+
+  
+
+  <script>
+    console.log(' \
+           ▄▄▀▀▀▀▀▀▀▀▀▄▄             \n \
+████▄   ▄█▀             ▀▀▄   ▄▄███▀ \n \
+   ▀████▌                  ████▀▀    \n \
+      █▀███▄▄          ▄████▀▌       \n \
+     █    ▀▀███▄▄▄▄▄████▀    █       \n \
+     █        ▀██████▀       ▐▌      \n \
+     █         ▀███▀         ▐       \n \
+     ▐▌         ▐██          █       \n \
+      ▐█        ▐██        ▄█        \n \
+        ▀▄      ▐██       █▀         \n \
+          ▀▀▄▄  ▐██   ▄▄▀            \n \
+              ▀▀▐██▀▀                \n \
+                ▐██                  \n \
+                ▐██                  \n \
+                ▐██                  \
+');
+  </script>
+</html>

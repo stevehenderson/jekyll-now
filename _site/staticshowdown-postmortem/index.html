@@ -1,0 +1,1012 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <link rel="icon" href="/favicon.ico" sizes="32x32" type="image/x-icon">
+
+    <!--  Apple  -->
+    <link rel="apple-touch-icon-precomposed" href="/imgs/favicon/apple-touch-icon-precomposed.png">
+
+    <!--  Microsoft  -->
+    <meta name="msapplication-TileColor" content="#D8F0CC">
+    <meta name="msapplication-TileImage" content="/imgs/favicon/tileicon.png">
+
+    <!-- General page specifics -->
+
+    <!-- title variable -->
+    
+
+        
+
+    
+
+    <!-- url variable -->
+    
+
+        
+
+    
+
+    <!-- author variable -->
+    
+
+        
+
+    
+
+    <!-- keywords variable -->
+    
+
+    <title>Sock Singles, a post mortem on our static showdown entry | Cryptic Chat</title>
+    <meta name="description" content="We are a group of developers involved in the tech industry that work, laugh, discover, and grow together. We encourage each other to push the boundaries of the technology we work with everyday. To help reach our personal goals we collaborating often and want others to share in this  experience.
+">
+    <meta name="keywords" content="                                    clojurescript,                            javascript,                            react,                            firebase,                        ">
+    <meta name="author" content="Chris Dolphin">
+
+    <!-- Facebook page specifics -->
+    <meta property="og:title" content="Sock Singles, a post mortem on our static showdown entry | Cryptic Chat">
+    <meta property="og:description" content="We are a group of developers involved in the tech industry that work, laugh, discover, and grow together. We encourage each other to push the boundaries of the technology we work with everyday. To help reach our personal goals we collaborating often and want others to share in this  experience.
+">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Cryptic Chat">
+    <meta property="og:image" content="">
+
+    <!-- Twitter page specifics -->
+    <meta name="twitter:title" content="Sock Singles, a post mortem on our static showdown entry | Cryptic Chat">
+    <meta name="twitter:description" content="We are a group of developers involved in the tech industry that work, laugh, discover, and grow together. We encourage each other to push the boundaries of the technology we work with everyday. To help reach our personal goals we collaborating often and want others to share in this  experience.
+">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:url" content="/staticshowdown-postmortem/">
+    <meta name="twitter:site" content="@likethemammal">
+    <meta name="twitter:image" content="">
+
+
+    <link rel="stylesheet" href="/styles.css">
+    <link rel="canonical" href="https://cryptic.io/staticshowdown-postmortem/">
+
+    <link href="//fonts.googleapis.com/css?family=Open+Sans:400italic,400,600" rel="stylesheet" type="text/css">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+
+    <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-37560411-4', 'auto');
+    ga('require', 'displayfeatures');
+    ga('send', 'pageview');
+
+</script>
+
+</head>
+
+
+  
+
+  <body>
+
+  
+
+    <div id="nav-band">
+    <div id="nav">
+        <a id="logo" href="/">
+            <i class="fa fa-users"></i>
+            Cryptic: chat
+        </a>
+
+        <nav id="desktop-nav">
+            <a class="nav-item" href="/search" title="Search">Search</a>
+            <a class="nav-item" href="/tags" title="Tags">Tags</a>
+            <a class="nav-item" href="/members" title="Members">Members</a>
+            <a class="nav-item" href="http://github.com/cryptic-io/cryptic-chat/" title="Github Repo">Github</a>
+            <a class="nav-item" href="/about" title="About">About</a>
+            <a class="nav-item" href="/" title="Blog">Blog</a>
+        </nav>
+
+        <input id="mobile-nav-open" class="mobile-nav-toggle" type="text" readonly>
+        <input id="mobile-nav-close" class="mobile-nav-toggle" type="text" readonly>
+
+        <nav id="mobile-nav">
+            <a class="nav-item" href="/" title="Blog">Blog</a>
+            <a class="nav-item" href="/about" title="About">About</a>
+            <a class="nav-item" href="http://github.com/cryptic-io/cryptic-chat/" title="Github Repo">Github</a>
+            <a class="nav-item" href="/members" title="Members">Members</a>
+            <a class="nav-item" href="/tags" title="Tags">Tags</a>
+            <a class="nav-item" href="/search" title="Search">Search</a>
+        </nav>
+
+    </div>
+</div>
+
+
+    <div id="main">
+
+        
+
+
+
+
+
+
+
+
+
+
+
+    <div id="post">
+
+        <header id="post-header" class="cf">
+
+            <a href="#author" title="Author">
+                <div id="post-author-avatar">
+                    <img id="post-author-img-bg" src="https://avatars2.githubusercontent.com/u/594035" alt="Marco Polo background" title="Marco Polo background"/>
+                    <img id="post-author-img" src="https://avatars2.githubusercontent.com/u/594035" alt="Marco Polo Avatar Image" title="Marco Polo"/>
+                </div>
+            </a>
+
+            <div id="post-header-words">
+
+                <h1 id="post-title">
+
+                    <span id="post-title-text">
+                        Sock Singles, a post mortem on our static showdown entry
+                    </span>
+
+                    <div id="post-tags">
+                        
+                            <a class="post-tag" href="/tags#clojurescript" title="clojurescript">#clojurescript</a>
+                        
+                            <a class="post-tag" href="/tags#javascript" title="javascript">#javascript</a>
+                        
+                            <a class="post-tag" href="/tags#react" title="react">#react</a>
+                        
+                            <a class="post-tag" href="/tags#firebase" title="firebase">#firebase</a>
+                        
+                    </div>
+                </h1>
+
+                <div id="post-metadata">
+                    <span id="post-date">Oct 5, 2014</span>
+                    •
+                    <a id="disqus-num-comments" href="#disqus_thread" title="To the comments">0 comments</a>
+                </div>
+
+            </div>
+
+        </header>
+
+        <div id="post-assets">
+
+            
+            <div class="post-asset-container">
+                <a id="post-demo" class="post-asset" href="https://sock-singles.firebaseapp.com/" title="Demo">Demo</a>
+            </div>
+            
+
+            
+
+        </div>
+
+        
+          <div class="post-crosspost-container">
+            This was cross-posted on <a href="http://marcopolo.io/2014/02/11/staticshowdown-postmortem.html">http://marcopolo.io/2014/02/11/staticshowdown-postmortem.html</a>
+          </div>
+        
+
+        <article id="post-content">
+
+            <h1>Static Showdown</h1>
+
+<p>The static showdown was a hackathon that centered around building a completely static site.
+The purpose was to highlight <a href="http://www.divshot.io/">divshot</a>, a company that specializes in static page hosting.</p>
+
+<h1>Sock Singles</h1>
+
+<p>Our idea was inspired by the new .singles TLD. We came up with sock.singles as a place to
+find your matching sock.</p>
+
+<h2>The Pitch</h2>
+
+<p>Sock Singles is the go to site for finding the pair to your single sock.
+It matches your socks across several different layers of compatibility, to make sure
+that we find the perfect match for you.</p>
+
+<h2>Market Research</h2>
+
+<p>100% of people who wear socks have lost a single sock, sock singles is for them!</p>
+
+<hr>
+
+<p>It was a lot of fun making such a ridiculous site. We parodied dating sites, which led to
+golden puns such as a camo colored sock labeled: &quot;I&#39;m hunting for my <em>sole</em> mate&quot;.
+Being as ridiculous as it it was, we stilled learned valuable lessons from the tools we
+were using.</p>
+
+<h1>React</h1>
+
+<p>I cannot stress enough how cool <a href="http://facebook.github.io/react">React</a> is! It takes out
+a substanial source of complexity in UI&#39;s by &quot;re-rendering&quot; everything all the time.
+Instead of setting the intial DOM and trying to figure out how to best update the DOM
+after state changes, you imagine everything will be re-rendered after a state change.
+React handles the optimizations to make this fast. And that&#39;s the way tools should work.
+We shouldn&#39;t have to bake in optimizations every chance we get.</p>
+
+<h3>React - Cons</h3>
+
+<p>It wasn&#39;t a perfect honeymoon with React. Our team was very familiar with Backbone, and
+the Backbone style of setting Views. We kept trying to reach towards using events to pass data
+between the child and the parent. We were passing the Backbone router into components, as a way
+to mutate to global state. React didn&#39;t yell at us, but I could tell it was disappointed.
+In retrospect, very few things should have access to the router. The router allows
+changing the global state from anywhere. With such power, it&#39;s important to keep it on a short
+leash.</p>
+
+<h3>React V. Backbone Views</h3>
+
+<p>React&#39;s model is a very composable hierarchy of components. This hierarchy allows you to trace
+exactly what caused a state change. In contrast, Backbone Views are a sort of cesspool of events.
+It is nearly impossible to know what triggered what, and this leads to very <em>spooky</em> behaviors.</p>
+
+<h1>Clojurescript</h1>
+
+<p>I wrote parts of sock singles in Clojurescript. This allowed me to quickly simulate sock data
+so the other two team members could start working with data. Making simlated data was as easy
+as a call to rand-nth. Here is a snippet of the code that simulated socks:</p>
+<div class="highlight"><pre><code class="language-clojure" data-lang="clojure"><span class="p">(</span><span class="k">def </span><span class="nv">stock-titles</span>
+  <span class="p">[</span><span class="s">&quot;Fuzzy Wuzzy&quot;</span> <span class="s">&quot;Sock it to me it&quot;</span> <span class="s">&quot;Linty Linda&quot;</span> <span class="s">&quot;Sleepless in Sockeatlle&quot;</span>
+   <span class="s">&quot;Socker Star&quot;</span> <span class="s">&quot;Sockretes&quot;</span><span class="p">])</span>
+
+<span class="p">(</span><span class="kd">defn </span><span class="nv">get-socks</span> <span class="p">[</span><span class="nv">count</span><span class="p">]</span>
+  <span class="p">(</span><span class="nb">for </span><span class="p">[</span><span class="nv">_</span> <span class="p">(</span><span class="nb">range </span><span class="nv">count</span><span class="p">)]</span>
+    <span class="p">{</span><span class="ss">:image-path</span> <span class="p">(</span><span class="nf">rand-nth</span> <span class="nv">stock-pictures</span><span class="p">)</span>
+     <span class="ss">:username</span> <span class="p">(</span><span class="nf">rand-nth</span> <span class="nv">stock-usernames</span><span class="p">)</span>
+     <span class="ss">:title</span> <span class="p">(</span><span class="nf">rand-nth</span> <span class="nv">stock-titles</span><span class="p">)}))</span>
+
+<span class="p">(</span><span class="kd">defn </span><span class="nv">getSocks</span>
+  <span class="p">([</span><span class="nv">count</span><span class="p">]</span>
+   <span class="p">(</span><span class="k">let </span><span class="p">[</span><span class="nv">promise</span> <span class="p">(</span><span class="nf">gen-promise</span><span class="p">)]</span>
+     <span class="p">(</span><span class="nf">.resolve</span> <span class="nv">promise</span> <span class="p">(</span><span class="nf">clj-&gt;js</span> <span class="p">(</span><span class="nf">get-socks</span> <span class="nv">count</span><span class="p">)))</span>
+     <span class="nv">promise</span><span class="p">))</span>
+  <span class="p">([]</span>
+   <span class="p">(</span><span class="nf">getSocks</span> <span class="mi">10</span><span class="p">)))</span>
+</code></pre></div>
+<p>Then I just exposed a function that converted the cljs datastructures into
+javascript datastructures, wrapped it in a promise and I was good to go! My team members couldn&#39;t
+tell the difference, and I wrote the code in half the time! win/win!</p>
+
+<p><br/></p>
+
+<p>I later ran into a problem writing the filters in Javascript. I needed to display the instersection
+of 3 filtered list of socks. Instead of coming up with a long (bug ridden) javascript
+implementation, I shelled out to Clojurescript and used sets and intersection to get the job done.
+I was afraid it would be noticeably slow, but, thankfully, I was wrong!</p>
+<div class="highlight"><pre><code class="language-clojure" data-lang="clojure"><span class="p">(</span><span class="kd">defn </span><span class="nv">-&gt;vecs</span> <span class="p">[</span><span class="nv">arrays</span><span class="p">]</span>
+  <span class="p">(</span><span class="nf">mapv</span> <span class="nv">js-&gt;clj</span> <span class="nv">arrays</span><span class="p">))</span>
+<span class="p">(</span><span class="kd">defn </span><span class="nv">intersect-vecs</span> <span class="p">[</span><span class="nv">vecs</span><span class="p">]</span>
+  <span class="p">(</span><span class="nb">apply </span><span class="nv">set/intersection</span>
+         <span class="p">(</span><span class="nb">map set </span><span class="nv">vecs</span><span class="p">)))</span>
+<span class="p">(</span><span class="kd">defn </span><span class="nv">intersectArrays</span> <span class="p">[</span><span class="nv">arrays</span><span class="p">]</span>
+  <span class="p">(</span><span class="nb">-&gt; </span><span class="nv">arrays</span> <span class="nv">-&gt;vecs</span> <span class="nv">intersect-vecs</span> <span class="nv">clj-&gt;js</span><span class="p">))</span>
+</code></pre></div>
+<p>Only 7 lines of code to find the intersection of N javascript arrays.</p>
+
+<h1>Firebase</h1>
+
+<p>Firebase dutifully performed all the tasks I asked of it and more. Even setting up hosting on it
+was trivial. It also allowed me to setup Github Auth with a couple of clicks. My only gripe with
+Firebase is that it doesn&#39;t provide a way to do more advanced queries with data. For example,
+to fetch the whole set of socks, I had to first fetch all the users
+and locally parse all the users to get their socks. It worked, but it added incidental complexity.</p>
+
+<h1>Divshot</h1>
+
+<p>I don&#39;t really understand Divshot. I don&#39;t see the benefit in having a service that just does
+Static Hosting. I hope I&#39;m wrong, and I get to see some interesting things come out. As for
+actually using divshot, I got stuck with a &quot;Deployed Failed&quot; message. No actual errors or help,
+after some digging I found out I had to do <code>divshot push production</code> instead of <code>divshot push</code>.</p>
+
+<h1>ChromeOS</h1>
+
+<p>I had some hope for Chrome OS initially, but that quickly vanished after seeing a team member
+develop in it. We had a lot of trouble simply viewing files. Symlinks don&#39;t show up in the file
+viewer, and it sometimes just doesn&#39;t show files at all. I love the Chrome dev tools for debugging,
+but I don&#39;t think they are a viable development platform. I&#39;d get merge conflicts just because
+dev-tools did some weird formatting.</p>
+
+<h1>The Team</h1>
+
+<p>I&#39;d like to thank <a href="https://github.com/marlonlandaverde">Marlon</a> and
+<a href="https://github.com/likethemammal">Dolphin</a> for putting up with me and building this
+amazing project!</p>
+
+<h1>The Site</h1>
+
+<p>Well that&#39;s enough talk check it out! <a href="https://sock-singles.firebaseapp.com/">Sock Singles</a>
+<br/>
+You&#39;ll need a github account if you want to sell your sock :)</p>
+
+
+        </article>
+
+        <div id="post-share">
+            <p id="post-share-cta">Did you like this article? Share it!</p>
+            <div id="post-share-buttons">
+                <a target="_blank" href="https://twitter.com/home?status=Sock Singles, a post mortem on our static showdown entry https://cryptic.io/staticshowdown-postmortem/" title="Share on Twitter">
+                    <svg id="post-share-twitter" class="post-share-button">
+                        <use xlink:href="/imgs/svg.svg#svg-twitter" x="0" y="0" width="100%" height="100%"></use>
+                    </svg>
+                </a>
+                <a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://cryptic.io/staticshowdown-postmortem/" title="Share on Facebook">
+                    <svg id="post-share-facebook" class="post-share-button">
+                        <use xlink:href="/imgs/svg.svg#svg-facebook" x="0" y="0" width="100%" height="100%"></use>
+                    </svg>
+                </a>
+                <a target="_blank" href="https://plus.google.com/share?url=https://cryptic.io/staticshowdown-postmortem/" title="Share on Google">
+                    <svg id="post-share-google" class="post-share-button">
+                        <use xlink:href="/imgs/svg.svg#svg-google" x="0" y="0" width="100%" height="100%"></use>
+                    </svg>
+                </a>
+            </div>
+        </div>
+
+    </div>
+
+    <footer id="footer">
+
+        <h2 class="page-sub-header">Author</h2>
+
+        <div id="author">
+
+            <div class="member">
+
+    <div class="member-header">
+
+        <div class="member-author-avatar">
+            <img class="member-author-img" src="https://avatars2.githubusercontent.com/u/594035"/>
+        </div>
+
+        <div class="member-author-words">
+            <div class="member-author-name">
+                <span>Marco Polo</span>
+                <span class="member-author-username">marcopolo</span>
+            </div>
+            <p class="member-author-bio">Partially Functional</p>
+
+            <div class="member-author-companies">
+
+                <i class="fa fa-building-o"></i>
+
+                
+
+                
+
+                
+
+                    <a href="http://grooveshark.com/" class="company-link">Grooveshark</a>
+
+                
+
+                
+
+                
+
+                
+
+                
+
+                
+
+                
+
+                
+
+                
+
+                
+
+                
+
+                
+
+                
+
+                
+
+                
+
+                
+
+                
+
+                    <a href="http://getprismatic.com/home" class="company-link">Prismatic</a>
+
+                
+
+                
+
+                
+
+            </div>
+        </div>
+
+        <div class="member-author-socials">
+
+            
+            <a href="http://marcopolo.io/" class="member-author-social" title="Website of Marco Polo">
+                Website
+            </a>
+            
+
+            
+            <a href="mailto:marco@marcopolo.io" class="member-author-social" title="Email of Marco Polo">
+                Email
+            </a>
+            
+
+            
+            <a href="http://github.com/marcopolo" class="member-author-social" title="Github of Marco Polo">
+                Github
+            </a>
+            
+
+            
+            <a href="https://twitter.com/open_sourcery" class="member-author-social" title="Twitter of Marco Polo">
+                Twitter
+            </a>
+            
+
+            
+
+        </div>
+
+    </div>
+
+    <div class="member-related-posts">
+
+        <div class="member-related-posts-title">
+            <h2 class="member-related-posts-title-text">Posts by marcopolo</h2>
+        </div>
+
+        <ul class="member-related-posts-list">
+
+            
+
+            
+
+            <li class="member-related-post cf">
+                <i class="fa fa-angle-right"></i>
+                <a href="/an-intro-to-functional-reactive-programming/" title="An Intro to Functional Reactive Programming in UIs">
+                    <span>An Intro to Functional Reactive Programming in UIs</span>
+                </a>
+            </li>
+
+            
+
+            <li class="member-related-post cf">
+                <i class="fa fa-angle-right"></i>
+                <a href="/staticshowdown-postmortem/" title="Sock Singles, a post mortem on our static showdown entry">
+                    <span>Sock Singles, a post mortem on our static showdown entry</span>
+                </a>
+            </li>
+
+            
+
+        </ul>
+
+        <a class="member-related-posts-all-link" href="/tags#marcopolo" title="See all posts by marcopolo">See all posts by marcopolo</a>
+
+    </div>
+
+</div>
+
+
+        </div>
+
+        <h2 class="page-sub-header">Comments</h2>
+
+        <div id="disqus_thread"></div>
+
+    </footer>
+
+
+
+
+
+
+
+
+
+
+    </div>
+
+    <footer id="bottom-band" class="cf">
+
+    
+
+    <div id="bottom-recent" class="bottom-section">
+
+        <h2 class="recent-posts-title page-sub-header">Recent Posts</h2>
+
+        <ul class="recent-posts-list">
+
+            
+
+            
+
+            
+
+            <li class="recent-post cf">
+
+                <div class="recent-post-words">
+
+                    <div class="recent-post-title">
+
+                        <h4 class="recent-post-title-text">
+                            <a class="recent-post-title-text-link" href="/developing-gamepad-virtual-keyboard/" title="Considerations for developing a gamepad virtual keyboard, Part 1: The interface">
+                                Considerations for developing a gamepad virtual keyboard, Part 1: The interface
+                            </a>
+
+                            
+                            <a class="post-tag" href="/tags/" title="flux">#flux</a>
+                            
+                            <a class="post-tag" href="/tags/" title="daisywheeljs">#daisywheeljs</a>
+                            
+                            <a class="post-tag" href="/tags/" title="gamepad">#gamepad</a>
+                            
+                            <a class="post-tag" href="/tags/" title="html5">#html5</a>
+                            
+
+                        </h4>
+
+                    </div>
+
+                    <div class="recent-post-metadata">
+
+                        <span class="recent-post-authoring-info">
+                            <a href="/tags#likethemammal" class="recent-post-author-name" title="Chris Dolphin">Chris Dolphin</a>
+                            •
+                            <span class="recent-post-date">12 Sep 2015</span>
+                        </span>
+
+                    </div>
+
+                    <a class="recent-post-link" href="/developing-gamepad-virtual-keyboard/" title="Considerations for developing a gamepad virtual keyboard, Part 1: The interface"></a>
+
+                </div>
+
+                <div class="recent-post-author-avatar">
+                    <a href="/members#likethemammal" title="likethemammal">
+                        <img class="recent-post-author-img" src="https://avatars1.githubusercontent.com/u/3430841" alt="likethemammal Avatar Image" title="likethemammal"/>
+                    </a>
+                </div>
+
+            </li>
+
+            
+
+            
+
+            
+
+            
+
+            
+
+            
+
+            
+
+            
+
+            
+
+            
+
+            
+
+            <li class="recent-post cf">
+
+                <div class="recent-post-words">
+
+                    <div class="recent-post-title">
+
+                        <h4 class="recent-post-title-text">
+                            <a class="recent-post-title-text-link" href="/intro-to-daisywheeljs/" title="Adding the DaisywheelJS onscreen-keyboard to HTML5 Gamepad projects">
+                                Adding the DaisywheelJS onscreen-keyboard to HTML5 Gamepad projects
+                            </a>
+
+                            
+                            <a class="post-tag" href="/tags/" title="daisywheeljs">#daisywheeljs</a>
+                            
+                            <a class="post-tag" href="/tags/" title="daisywheel">#daisywheel</a>
+                            
+                            <a class="post-tag" href="/tags/" title="gamepad">#gamepad</a>
+                            
+                            <a class="post-tag" href="/tags/" title="html5">#html5</a>
+                            
+
+                        </h4>
+
+                    </div>
+
+                    <div class="recent-post-metadata">
+
+                        <span class="recent-post-authoring-info">
+                            <a href="/tags#likethemammal" class="recent-post-author-name" title="Chris Dolphin">Chris Dolphin</a>
+                            •
+                            <span class="recent-post-date">31 Aug 2015</span>
+                        </span>
+
+                    </div>
+
+                    <a class="recent-post-link" href="/intro-to-daisywheeljs/" title="Adding the DaisywheelJS onscreen-keyboard to HTML5 Gamepad projects"></a>
+
+                </div>
+
+                <div class="recent-post-author-avatar">
+                    <a href="/members#likethemammal" title="likethemammal">
+                        <img class="recent-post-author-img" src="https://avatars1.githubusercontent.com/u/3430841" alt="likethemammal Avatar Image" title="likethemammal"/>
+                    </a>
+                </div>
+
+            </li>
+
+            
+
+            
+
+            
+
+            
+
+            
+
+            
+
+            
+
+            
+
+            
+
+            
+
+            
+
+            
+
+            
+
+            <li class="recent-post cf">
+
+                <div class="recent-post-words">
+
+                    <div class="recent-post-title">
+
+                        <h4 class="recent-post-title-text">
+                            <a class="recent-post-title-text-link" href="/go-http/" title="Go's http package by example">
+                                Go's http package by example
+                            </a>
+
+                            
+                            <a class="post-tag" href="/tags/" title="golang">#golang</a>
+                            
+                            <a class="post-tag" href="/tags/" title="http">#http</a>
+                            
+                            <a class="post-tag" href="/tags/" title="middleware">#middleware</a>
+                            
+
+                        </h4>
+
+                    </div>
+
+                    <div class="recent-post-metadata">
+
+                        <span class="recent-post-authoring-info">
+                            <a href="/tags#mediocregopher" class="recent-post-author-name" title="Brian Picciano">Brian Picciano</a>
+                            •
+                            <span class="recent-post-date">15 Jul 2015</span>
+                        </span>
+
+                    </div>
+
+                    <a class="recent-post-link" href="/go-http/" title="Go's http package by example"></a>
+
+                </div>
+
+                <div class="recent-post-author-avatar">
+                    <a href="/members#mediocregopher" title="mediocregopher">
+                        <img class="recent-post-author-img" src="https://avatars.githubusercontent.com/u/933154" alt="mediocregopher Avatar Image" title="mediocregopher"/>
+                    </a>
+                </div>
+
+            </li>
+
+            
+
+            
+
+            
+
+            
+
+            
+
+            
+
+            
+
+            
+
+            
+
+            
+
+            
+
+            <li class="recent-post cf">
+
+                <div class="recent-post-words">
+
+                    <div class="recent-post-title">
+
+                        <h4 class="recent-post-title-text">
+                            <a class="recent-post-title-text-link" href="/rabbit-hole/" title="Rabbit Hole">
+                                Rabbit Hole
+                            </a>
+
+                            
+                            <a class="post-tag" href="/tags/" title="debug">#debug</a>
+                            
+                            <a class="post-tag" href="/tags/" title="php">#php</a>
+                            
+                            <a class="post-tag" href="/tags/" title="sysdig">#sysdig</a>
+                            
+                            <a class="post-tag" href="/tags/" title="dns">#dns</a>
+                            
+
+                        </h4>
+
+                    </div>
+
+                    <div class="recent-post-metadata">
+
+                        <span class="recent-post-authoring-info">
+                            <a href="/tags#mediocregopher" class="recent-post-author-name" title="Brian Picciano">Brian Picciano</a>
+                            •
+                            <span class="recent-post-date">11 Mar 2015</span>
+                        </span>
+
+                    </div>
+
+                    <a class="recent-post-link" href="/rabbit-hole/" title="Rabbit Hole"></a>
+
+                </div>
+
+                <div class="recent-post-author-avatar">
+                    <a href="/members#mediocregopher" title="mediocregopher">
+                        <img class="recent-post-author-img" src="https://avatars.githubusercontent.com/u/933154" alt="mediocregopher Avatar Image" title="mediocregopher"/>
+                    </a>
+                </div>
+
+            </li>
+
+            
+
+            
+
+            
+
+            
+
+            
+
+            
+
+            
+
+            
+
+            
+
+            
+
+            
+
+            <li class="recent-post cf">
+
+                <div class="recent-post-words">
+
+                    <div class="recent-post-title">
+
+                        <h4 class="recent-post-title-text">
+                            <a class="recent-post-title-text-link" href="/protip-sleep/" title="Protip - Bash Sleep">
+                                Protip - Bash Sleep
+                            </a>
+
+                            
+                            <a class="post-tag" href="/tags/" title="bash">#bash</a>
+                            
+                            <a class="post-tag" href="/tags/" title="protip">#protip</a>
+                            
+
+                        </h4>
+
+                    </div>
+
+                    <div class="recent-post-metadata">
+
+                        <span class="recent-post-authoring-info">
+                            <a href="/tags#mediocregopher" class="recent-post-author-name" title="Brian Picciano">Brian Picciano</a>
+                            •
+                            <span class="recent-post-date">01 Dec 2014</span>
+                        </span>
+
+                    </div>
+
+                    <a class="recent-post-link" href="/protip-sleep/" title="Protip - Bash Sleep"></a>
+
+                </div>
+
+                <div class="recent-post-author-avatar">
+                    <a href="/members#mediocregopher" title="mediocregopher">
+                        <img class="recent-post-author-img" src="https://avatars.githubusercontent.com/u/933154" alt="mediocregopher Avatar Image" title="mediocregopher"/>
+                    </a>
+                </div>
+
+            </li>
+
+            
+
+            
+
+            
+
+            
+
+            
+
+            
+
+            
+
+        </ul>
+
+    </div>
+
+    
+
+    <div id="bottom-tags" class="bottom-section">
+
+        <h2 class="page-sub-header">Tags</h2>
+
+        <ul id="bottom-tags-list">
+            
+            <li class="post-tag"><a href="/tags#aws" title="aws">#aws<span>(1)</span></a></li>
+            
+            <li class="post-tag"><a href="/tags#apache" title="apache">#apache<span>(1)</span></a></li>
+            
+            <li class="post-tag"><a href="/tags#bash" title="bash">#bash<span>(2)</span></a></li>
+            
+            <li class="post-tag"><a href="/tags#clojurescript" title="clojurescript">#clojurescript<span>(1)</span></a></li>
+            
+            <li class="post-tag"><a href="/tags#javascript" title="javascript">#javascript<span>(2)</span></a></li>
+            
+            <li class="post-tag"><a href="/tags#react" title="react">#react<span>(2)</span></a></li>
+            
+            <li class="post-tag"><a href="/tags#firebase" title="firebase">#firebase<span>(1)</span></a></li>
+            
+            <li class="post-tag"><a href="/tags#clojure" title="clojure">#clojure<span>(1)</span></a></li>
+            
+            <li class="post-tag"><a href="/tags#terrain" title="terrain">#terrain<span>(1)</span></a></li>
+            
+            <li class="post-tag"><a href="/tags#erlang" title="erlang">#erlang<span>(1)</span></a></li>
+            
+            <li class="post-tag"><a href="/tags#jekyll" title="jekyll">#jekyll<span>(2)</span></a></li>
+            
+            <li class="post-tag"><a href="/tags#github-pages" title="github-pages">#github-pages<span>(2)</span></a></li>
+            
+            <li class="post-tag"><a href="/tags#dev-blog" title="dev-blog">#dev-blog<span>(1)</span></a></li>
+            
+            <li class="post-tag"><a href="/tags#liquid" title="liquid">#liquid<span>(1)</span></a></li>
+            
+            <li class="post-tag"><a href="/tags#frp" title="frp">#frp<span>(1)</span></a></li>
+            
+            <li class="post-tag"><a href="/tags#functional" title="functional">#functional<span>(1)</span></a></li>
+            
+            <li class="post-tag"><a href="/tags#reactive" title="reactive">#reactive<span>(1)</span></a></li>
+            
+            <li class="post-tag"><a href="/tags#elm" title="elm">#elm<span>(1)</span></a></li>
+            
+            <li class="post-tag"><a href="/tags#om" title="om">#om<span>(1)</span></a></li>
+            
+            <li class="post-tag"><a href="/tags#protip" title="protip">#protip<span>(1)</span></a></li>
+            
+            <li class="post-tag"><a href="/tags#debug" title="debug">#debug<span>(1)</span></a></li>
+            
+            <li class="post-tag"><a href="/tags#php" title="php">#php<span>(1)</span></a></li>
+            
+            <li class="post-tag"><a href="/tags#sysdig" title="sysdig">#sysdig<span>(1)</span></a></li>
+            
+            <li class="post-tag"><a href="/tags#dns" title="dns">#dns<span>(1)</span></a></li>
+            
+            <li class="post-tag"><a href="/tags#golang" title="golang">#golang<span>(1)</span></a></li>
+            
+            <li class="post-tag"><a href="/tags#http" title="http">#http<span>(1)</span></a></li>
+            
+            <li class="post-tag"><a href="/tags#middleware" title="middleware">#middleware<span>(1)</span></a></li>
+            
+            <li class="post-tag"><a href="/tags#daisywheeljs" title="daisywheeljs">#daisywheeljs<span>(2)</span></a></li>
+            
+            <li class="post-tag"><a href="/tags#daisywheel" title="daisywheel">#daisywheel<span>(1)</span></a></li>
+            
+            <li class="post-tag"><a href="/tags#gamepad" title="gamepad">#gamepad<span>(2)</span></a></li>
+            
+            <li class="post-tag"><a href="/tags#html5" title="html5">#html5<span>(2)</span></a></li>
+            
+            <li class="post-tag"><a href="/tags#flux" title="flux">#flux<span>(1)</span></a></li>
+            
+        </ul>
+
+    </div>
+</footer>
+
+<div id="copyright-band">
+
+    <small id="copyright">Designed by <a href="http://likethemammal.com" title="Chris Dolphin's Personal Site">Chris Dolphin</a> and hosted on <a href="http://github.com/cryptic-io/cryptic-chat/" title="Cryptic IO Github Repo">Github</a></small>
+
+</div>
+
+
+  </body>
+
+  
+
+    <script type="text/javascript">
+    var parent = (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]);
+    var disqus_shortname = 'crypticio'; // required: replace example with your forum shortname
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        parent.appendChild(dsq);
+    })();
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function () {
+        var s = document.createElement('script'); s.async = true;
+        s.type = 'text/javascript';
+        s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+        parent.appendChild(s);
+    }());
+</script>
+
+
+  
+
+  <script>
+    console.log(' \
+           ▄▄▀▀▀▀▀▀▀▀▀▄▄             \n \
+████▄   ▄█▀             ▀▀▄   ▄▄███▀ \n \
+   ▀████▌                  ████▀▀    \n \
+      █▀███▄▄          ▄████▀▌       \n \
+     █    ▀▀███▄▄▄▄▄████▀    █       \n \
+     █        ▀██████▀       ▐▌      \n \
+     █         ▀███▀         ▐       \n \
+     ▐▌         ▐██          █       \n \
+      ▐█        ▐██        ▄█        \n \
+        ▀▄      ▐██       █▀         \n \
+          ▀▀▄▄  ▐██   ▄▄▀            \n \
+              ▀▀▐██▀▀                \n \
+                ▐██                  \n \
+                ▐██                  \n \
+                ▐██                  \
+');
+  </script>
+</html>

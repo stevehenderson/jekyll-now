@@ -1,0 +1,885 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <link rel="icon" href="/favicon.ico" sizes="32x32" type="image/x-icon">
+
+    <!--  Apple  -->
+    <link rel="apple-touch-icon-precomposed" href="/imgs/favicon/apple-touch-icon-precomposed.png">
+
+    <!--  Microsoft  -->
+    <meta name="msapplication-TileColor" content="#D8F0CC">
+    <meta name="msapplication-TileImage" content="/imgs/favicon/tileicon.png">
+
+    <!-- General page specifics -->
+
+    <!-- title variable -->
+    
+
+        
+
+    
+
+    <!-- url variable -->
+    
+
+        
+
+    
+
+    <!-- author variable -->
+    
+
+        
+
+    
+
+    <!-- keywords variable -->
+    
+
+    <title>Protip - Bash Sleep | Cryptic Chat</title>
+    <meta name="description" content="We are a group of developers involved in the tech industry that work, laugh, discover, and grow together. We encourage each other to push the boundaries of the technology we work with everyday. To help reach our personal goals we collaborating often and want others to share in this  experience.
+">
+    <meta name="keywords" content="                                    bash,                            protip,                        ">
+    <meta name="author" content="Chris Dolphin">
+
+    <!-- Facebook page specifics -->
+    <meta property="og:title" content="Protip - Bash Sleep | Cryptic Chat">
+    <meta property="og:description" content="We are a group of developers involved in the tech industry that work, laugh, discover, and grow together. We encourage each other to push the boundaries of the technology we work with everyday. To help reach our personal goals we collaborating often and want others to share in this  experience.
+">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Cryptic Chat">
+    <meta property="og:image" content="">
+
+    <!-- Twitter page specifics -->
+    <meta name="twitter:title" content="Protip - Bash Sleep | Cryptic Chat">
+    <meta name="twitter:description" content="We are a group of developers involved in the tech industry that work, laugh, discover, and grow together. We encourage each other to push the boundaries of the technology we work with everyday. To help reach our personal goals we collaborating often and want others to share in this  experience.
+">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:url" content="/protip-sleep/">
+    <meta name="twitter:site" content="@likethemammal">
+    <meta name="twitter:image" content="">
+
+
+    <link rel="stylesheet" href="/styles.css">
+    <link rel="canonical" href="https://cryptic.io/protip-sleep/">
+
+    <link href="//fonts.googleapis.com/css?family=Open+Sans:400italic,400,600" rel="stylesheet" type="text/css">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+
+    <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-37560411-4', 'auto');
+    ga('require', 'displayfeatures');
+    ga('send', 'pageview');
+
+</script>
+
+</head>
+
+
+  
+
+  <body>
+
+  
+
+    <div id="nav-band">
+    <div id="nav">
+        <a id="logo" href="/">
+            <i class="fa fa-users"></i>
+            Cryptic: chat
+        </a>
+
+        <nav id="desktop-nav">
+            <a class="nav-item" href="/search" title="Search">Search</a>
+            <a class="nav-item" href="/tags" title="Tags">Tags</a>
+            <a class="nav-item" href="/members" title="Members">Members</a>
+            <a class="nav-item" href="http://github.com/cryptic-io/cryptic-chat/" title="Github Repo">Github</a>
+            <a class="nav-item" href="/about" title="About">About</a>
+            <a class="nav-item" href="/" title="Blog">Blog</a>
+        </nav>
+
+        <input id="mobile-nav-open" class="mobile-nav-toggle" type="text" readonly>
+        <input id="mobile-nav-close" class="mobile-nav-toggle" type="text" readonly>
+
+        <nav id="mobile-nav">
+            <a class="nav-item" href="/" title="Blog">Blog</a>
+            <a class="nav-item" href="/about" title="About">About</a>
+            <a class="nav-item" href="http://github.com/cryptic-io/cryptic-chat/" title="Github Repo">Github</a>
+            <a class="nav-item" href="/members" title="Members">Members</a>
+            <a class="nav-item" href="/tags" title="Tags">Tags</a>
+            <a class="nav-item" href="/search" title="Search">Search</a>
+        </nav>
+
+    </div>
+</div>
+
+
+    <div id="main">
+
+        
+
+
+
+
+
+
+
+    <div id="post">
+
+        <header id="post-header" class="cf">
+
+            <a href="#author" title="Author">
+                <div id="post-author-avatar">
+                    <img id="post-author-img-bg" src="https://avatars.githubusercontent.com/u/933154" alt="Brian Picciano background" title="Brian Picciano background"/>
+                    <img id="post-author-img" src="https://avatars.githubusercontent.com/u/933154" alt="Brian Picciano Avatar Image" title="Brian Picciano"/>
+                </div>
+            </a>
+
+            <div id="post-header-words">
+
+                <h1 id="post-title">
+
+                    <span id="post-title-text">
+                        Protip - Bash Sleep
+                    </span>
+
+                    <div id="post-tags">
+                        
+                            <a class="post-tag" href="/tags#bash" title="bash">#bash</a>
+                        
+                            <a class="post-tag" href="/tags#protip" title="protip">#protip</a>
+                        
+                    </div>
+                </h1>
+
+                <div id="post-metadata">
+                    <span id="post-date">Dec 1, 2014</span>
+                    •
+                    <a id="disqus-num-comments" href="#disqus_thread" title="To the comments">0 comments</a>
+                </div>
+
+            </div>
+
+        </header>
+
+        <div id="post-assets">
+
+            
+
+            
+
+        </div>
+
+        
+
+        <article id="post-content">
+
+            <p>This is a short post, but something I didn&#39;t realize. <code>sleep</code> is a bash utility
+which will sleep for a given number of seconds and then return. For example,
+<code>sleep 1000</code> will sleep for 1000 seconds.</p>
+
+<p>I discovered today <code>sleep</code> will also take in formatted intervals. For example,
+<code>sleep 1m</code> will sleep for one minute, <code>sleep 2h</code> will sleep for 2 hours, etc...</p>
+
+<p>So if you&#39;re tired of multiplying numbers by 60 in your head, you can rest easy
+now.</p>
+
+<p>Reference: <a href="http://linux.die.net/man/1/sleep">sleep man page</a></p>
+
+
+        </article>
+
+        <div id="post-share">
+            <p id="post-share-cta">Did you like this article? Share it!</p>
+            <div id="post-share-buttons">
+                <a target="_blank" href="https://twitter.com/home?status=Protip - Bash Sleep https://cryptic.io/protip-sleep/" title="Share on Twitter">
+                    <svg id="post-share-twitter" class="post-share-button">
+                        <use xlink:href="/imgs/svg.svg#svg-twitter" x="0" y="0" width="100%" height="100%"></use>
+                    </svg>
+                </a>
+                <a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://cryptic.io/protip-sleep/" title="Share on Facebook">
+                    <svg id="post-share-facebook" class="post-share-button">
+                        <use xlink:href="/imgs/svg.svg#svg-facebook" x="0" y="0" width="100%" height="100%"></use>
+                    </svg>
+                </a>
+                <a target="_blank" href="https://plus.google.com/share?url=https://cryptic.io/protip-sleep/" title="Share on Google">
+                    <svg id="post-share-google" class="post-share-button">
+                        <use xlink:href="/imgs/svg.svg#svg-google" x="0" y="0" width="100%" height="100%"></use>
+                    </svg>
+                </a>
+            </div>
+        </div>
+
+    </div>
+
+    <footer id="footer">
+
+        <h2 class="page-sub-header">Author</h2>
+
+        <div id="author">
+
+            <div class="member">
+
+    <div class="member-header">
+
+        <div class="member-author-avatar">
+            <img class="member-author-img" src="https://avatars.githubusercontent.com/u/933154"/>
+        </div>
+
+        <div class="member-author-words">
+            <div class="member-author-name">
+                <span>Brian Picciano</span>
+                <span class="member-author-username">mediocregopher</span>
+            </div>
+            <p class="member-author-bio">Coding, climbing, longboarding, movie watcher, ginger. I love go, clojure, redis, and sometimes erlang.</p>
+
+            <div class="member-author-companies">
+
+                <i class="fa fa-building-o"></i>
+
+                
+
+                
+
+                
+
+                    <a href="http://grooveshark.com/" class="company-link">Grooveshark</a>
+
+                
+
+                
+
+                
+
+                
+
+                
+
+                
+
+                
+
+                
+
+                
+
+            </div>
+        </div>
+
+        <div class="member-author-socials">
+
+            
+            <a href="http://mediocregopher.com" class="member-author-social" title="Website of Brian Picciano">
+                Website
+            </a>
+            
+
+            
+            <a href="mailto:mediocregopher@gmail.com" class="member-author-social" title="Email of Brian Picciano">
+                Email
+            </a>
+            
+
+            
+            <a href="http://github.com/mediocregopher" class="member-author-social" title="Github of Brian Picciano">
+                Github
+            </a>
+            
+
+            
+            <a href="https://twitter.com/mediocre_gopher" class="member-author-social" title="Twitter of Brian Picciano">
+                Twitter
+            </a>
+            
+
+            
+
+        </div>
+
+    </div>
+
+    <div class="member-related-posts">
+
+        <div class="member-related-posts-title">
+            <h2 class="member-related-posts-title-text">Posts by mediocregopher</h2>
+        </div>
+
+        <ul class="member-related-posts-list">
+
+            
+
+            
+
+            <li class="member-related-post cf">
+                <i class="fa fa-angle-right"></i>
+                <a href="/go-http/" title="Go's http package by example">
+                    <span>Go's http package by example</span>
+                </a>
+            </li>
+
+            
+
+            <li class="member-related-post cf">
+                <i class="fa fa-angle-right"></i>
+                <a href="/rabbit-hole/" title="Rabbit Hole">
+                    <span>Rabbit Hole</span>
+                </a>
+            </li>
+
+            
+
+            <li class="member-related-post cf">
+                <i class="fa fa-angle-right"></i>
+                <a href="/protip-sleep/" title="Protip - Bash Sleep">
+                    <span>Protip - Bash Sleep</span>
+                </a>
+            </li>
+
+            
+
+            <li class="member-related-post cf">
+                <i class="fa fa-angle-right"></i>
+                <a href="/erlang-pitfalls/" title="Erlang Pitfalls">
+                    <span>Erlang Pitfalls</span>
+                </a>
+            </li>
+
+            
+
+            <li class="member-related-post cf">
+                <i class="fa fa-angle-right"></i>
+                <a href="/clojure-diamond-square/" title="Random Terrain Generation, A Clojure Walkthrough">
+                    <span>Random Terrain Generation, A Clojure Walkthrough</span>
+                </a>
+            </li>
+
+            
+
+        </ul>
+
+        <a class="member-related-posts-all-link" href="/tags#mediocregopher" title="See all posts by mediocregopher">See all posts by mediocregopher</a>
+
+    </div>
+
+</div>
+
+
+        </div>
+
+        <h2 class="page-sub-header">Comments</h2>
+
+        <div id="disqus_thread"></div>
+
+    </footer>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </div>
+
+    <footer id="bottom-band" class="cf">
+
+    
+
+    <div id="bottom-recent" class="bottom-section">
+
+        <h2 class="recent-posts-title page-sub-header">Recent Posts</h2>
+
+        <ul class="recent-posts-list">
+
+            
+
+            
+
+            
+
+            <li class="recent-post cf">
+
+                <div class="recent-post-words">
+
+                    <div class="recent-post-title">
+
+                        <h4 class="recent-post-title-text">
+                            <a class="recent-post-title-text-link" href="/developing-gamepad-virtual-keyboard/" title="Considerations for developing a gamepad virtual keyboard, Part 1: The interface">
+                                Considerations for developing a gamepad virtual keyboard, Part 1: The interface
+                            </a>
+
+                            
+                            <a class="post-tag" href="/tags/" title="flux">#flux</a>
+                            
+                            <a class="post-tag" href="/tags/" title="daisywheeljs">#daisywheeljs</a>
+                            
+                            <a class="post-tag" href="/tags/" title="gamepad">#gamepad</a>
+                            
+                            <a class="post-tag" href="/tags/" title="html5">#html5</a>
+                            
+
+                        </h4>
+
+                    </div>
+
+                    <div class="recent-post-metadata">
+
+                        <span class="recent-post-authoring-info">
+                            <a href="/tags#likethemammal" class="recent-post-author-name" title="Chris Dolphin">Chris Dolphin</a>
+                            •
+                            <span class="recent-post-date">12 Sep 2015</span>
+                        </span>
+
+                    </div>
+
+                    <a class="recent-post-link" href="/developing-gamepad-virtual-keyboard/" title="Considerations for developing a gamepad virtual keyboard, Part 1: The interface"></a>
+
+                </div>
+
+                <div class="recent-post-author-avatar">
+                    <a href="/members#likethemammal" title="likethemammal">
+                        <img class="recent-post-author-img" src="https://avatars1.githubusercontent.com/u/3430841" alt="likethemammal Avatar Image" title="likethemammal"/>
+                    </a>
+                </div>
+
+            </li>
+
+            
+
+            
+
+            
+
+            
+
+            
+
+            
+
+            
+
+            
+
+            
+
+            
+
+            
+
+            <li class="recent-post cf">
+
+                <div class="recent-post-words">
+
+                    <div class="recent-post-title">
+
+                        <h4 class="recent-post-title-text">
+                            <a class="recent-post-title-text-link" href="/intro-to-daisywheeljs/" title="Adding the DaisywheelJS onscreen-keyboard to HTML5 Gamepad projects">
+                                Adding the DaisywheelJS onscreen-keyboard to HTML5 Gamepad projects
+                            </a>
+
+                            
+                            <a class="post-tag" href="/tags/" title="daisywheeljs">#daisywheeljs</a>
+                            
+                            <a class="post-tag" href="/tags/" title="daisywheel">#daisywheel</a>
+                            
+                            <a class="post-tag" href="/tags/" title="gamepad">#gamepad</a>
+                            
+                            <a class="post-tag" href="/tags/" title="html5">#html5</a>
+                            
+
+                        </h4>
+
+                    </div>
+
+                    <div class="recent-post-metadata">
+
+                        <span class="recent-post-authoring-info">
+                            <a href="/tags#likethemammal" class="recent-post-author-name" title="Chris Dolphin">Chris Dolphin</a>
+                            •
+                            <span class="recent-post-date">31 Aug 2015</span>
+                        </span>
+
+                    </div>
+
+                    <a class="recent-post-link" href="/intro-to-daisywheeljs/" title="Adding the DaisywheelJS onscreen-keyboard to HTML5 Gamepad projects"></a>
+
+                </div>
+
+                <div class="recent-post-author-avatar">
+                    <a href="/members#likethemammal" title="likethemammal">
+                        <img class="recent-post-author-img" src="https://avatars1.githubusercontent.com/u/3430841" alt="likethemammal Avatar Image" title="likethemammal"/>
+                    </a>
+                </div>
+
+            </li>
+
+            
+
+            
+
+            
+
+            
+
+            
+
+            
+
+            
+
+            
+
+            
+
+            
+
+            
+
+            
+
+            
+
+            <li class="recent-post cf">
+
+                <div class="recent-post-words">
+
+                    <div class="recent-post-title">
+
+                        <h4 class="recent-post-title-text">
+                            <a class="recent-post-title-text-link" href="/go-http/" title="Go's http package by example">
+                                Go's http package by example
+                            </a>
+
+                            
+                            <a class="post-tag" href="/tags/" title="golang">#golang</a>
+                            
+                            <a class="post-tag" href="/tags/" title="http">#http</a>
+                            
+                            <a class="post-tag" href="/tags/" title="middleware">#middleware</a>
+                            
+
+                        </h4>
+
+                    </div>
+
+                    <div class="recent-post-metadata">
+
+                        <span class="recent-post-authoring-info">
+                            <a href="/tags#mediocregopher" class="recent-post-author-name" title="Brian Picciano">Brian Picciano</a>
+                            •
+                            <span class="recent-post-date">15 Jul 2015</span>
+                        </span>
+
+                    </div>
+
+                    <a class="recent-post-link" href="/go-http/" title="Go's http package by example"></a>
+
+                </div>
+
+                <div class="recent-post-author-avatar">
+                    <a href="/members#mediocregopher" title="mediocregopher">
+                        <img class="recent-post-author-img" src="https://avatars.githubusercontent.com/u/933154" alt="mediocregopher Avatar Image" title="mediocregopher"/>
+                    </a>
+                </div>
+
+            </li>
+
+            
+
+            
+
+            
+
+            
+
+            
+
+            
+
+            
+
+            
+
+            
+
+            
+
+            
+
+            <li class="recent-post cf">
+
+                <div class="recent-post-words">
+
+                    <div class="recent-post-title">
+
+                        <h4 class="recent-post-title-text">
+                            <a class="recent-post-title-text-link" href="/rabbit-hole/" title="Rabbit Hole">
+                                Rabbit Hole
+                            </a>
+
+                            
+                            <a class="post-tag" href="/tags/" title="debug">#debug</a>
+                            
+                            <a class="post-tag" href="/tags/" title="php">#php</a>
+                            
+                            <a class="post-tag" href="/tags/" title="sysdig">#sysdig</a>
+                            
+                            <a class="post-tag" href="/tags/" title="dns">#dns</a>
+                            
+
+                        </h4>
+
+                    </div>
+
+                    <div class="recent-post-metadata">
+
+                        <span class="recent-post-authoring-info">
+                            <a href="/tags#mediocregopher" class="recent-post-author-name" title="Brian Picciano">Brian Picciano</a>
+                            •
+                            <span class="recent-post-date">11 Mar 2015</span>
+                        </span>
+
+                    </div>
+
+                    <a class="recent-post-link" href="/rabbit-hole/" title="Rabbit Hole"></a>
+
+                </div>
+
+                <div class="recent-post-author-avatar">
+                    <a href="/members#mediocregopher" title="mediocregopher">
+                        <img class="recent-post-author-img" src="https://avatars.githubusercontent.com/u/933154" alt="mediocregopher Avatar Image" title="mediocregopher"/>
+                    </a>
+                </div>
+
+            </li>
+
+            
+
+            
+
+            
+
+            
+
+            
+
+            
+
+            
+
+            
+
+            
+
+            
+
+            
+
+            <li class="recent-post cf">
+
+                <div class="recent-post-words">
+
+                    <div class="recent-post-title">
+
+                        <h4 class="recent-post-title-text">
+                            <a class="recent-post-title-text-link" href="/protip-sleep/" title="Protip - Bash Sleep">
+                                Protip - Bash Sleep
+                            </a>
+
+                            
+                            <a class="post-tag" href="/tags/" title="bash">#bash</a>
+                            
+                            <a class="post-tag" href="/tags/" title="protip">#protip</a>
+                            
+
+                        </h4>
+
+                    </div>
+
+                    <div class="recent-post-metadata">
+
+                        <span class="recent-post-authoring-info">
+                            <a href="/tags#mediocregopher" class="recent-post-author-name" title="Brian Picciano">Brian Picciano</a>
+                            •
+                            <span class="recent-post-date">01 Dec 2014</span>
+                        </span>
+
+                    </div>
+
+                    <a class="recent-post-link" href="/protip-sleep/" title="Protip - Bash Sleep"></a>
+
+                </div>
+
+                <div class="recent-post-author-avatar">
+                    <a href="/members#mediocregopher" title="mediocregopher">
+                        <img class="recent-post-author-img" src="https://avatars.githubusercontent.com/u/933154" alt="mediocregopher Avatar Image" title="mediocregopher"/>
+                    </a>
+                </div>
+
+            </li>
+
+            
+
+            
+
+            
+
+            
+
+            
+
+            
+
+            
+
+        </ul>
+
+    </div>
+
+    
+
+    <div id="bottom-tags" class="bottom-section">
+
+        <h2 class="page-sub-header">Tags</h2>
+
+        <ul id="bottom-tags-list">
+            
+            <li class="post-tag"><a href="/tags#aws" title="aws">#aws<span>(1)</span></a></li>
+            
+            <li class="post-tag"><a href="/tags#apache" title="apache">#apache<span>(1)</span></a></li>
+            
+            <li class="post-tag"><a href="/tags#bash" title="bash">#bash<span>(2)</span></a></li>
+            
+            <li class="post-tag"><a href="/tags#clojurescript" title="clojurescript">#clojurescript<span>(1)</span></a></li>
+            
+            <li class="post-tag"><a href="/tags#javascript" title="javascript">#javascript<span>(2)</span></a></li>
+            
+            <li class="post-tag"><a href="/tags#react" title="react">#react<span>(2)</span></a></li>
+            
+            <li class="post-tag"><a href="/tags#firebase" title="firebase">#firebase<span>(1)</span></a></li>
+            
+            <li class="post-tag"><a href="/tags#clojure" title="clojure">#clojure<span>(1)</span></a></li>
+            
+            <li class="post-tag"><a href="/tags#terrain" title="terrain">#terrain<span>(1)</span></a></li>
+            
+            <li class="post-tag"><a href="/tags#erlang" title="erlang">#erlang<span>(1)</span></a></li>
+            
+            <li class="post-tag"><a href="/tags#jekyll" title="jekyll">#jekyll<span>(2)</span></a></li>
+            
+            <li class="post-tag"><a href="/tags#github-pages" title="github-pages">#github-pages<span>(2)</span></a></li>
+            
+            <li class="post-tag"><a href="/tags#dev-blog" title="dev-blog">#dev-blog<span>(1)</span></a></li>
+            
+            <li class="post-tag"><a href="/tags#liquid" title="liquid">#liquid<span>(1)</span></a></li>
+            
+            <li class="post-tag"><a href="/tags#frp" title="frp">#frp<span>(1)</span></a></li>
+            
+            <li class="post-tag"><a href="/tags#functional" title="functional">#functional<span>(1)</span></a></li>
+            
+            <li class="post-tag"><a href="/tags#reactive" title="reactive">#reactive<span>(1)</span></a></li>
+            
+            <li class="post-tag"><a href="/tags#elm" title="elm">#elm<span>(1)</span></a></li>
+            
+            <li class="post-tag"><a href="/tags#om" title="om">#om<span>(1)</span></a></li>
+            
+            <li class="post-tag"><a href="/tags#protip" title="protip">#protip<span>(1)</span></a></li>
+            
+            <li class="post-tag"><a href="/tags#debug" title="debug">#debug<span>(1)</span></a></li>
+            
+            <li class="post-tag"><a href="/tags#php" title="php">#php<span>(1)</span></a></li>
+            
+            <li class="post-tag"><a href="/tags#sysdig" title="sysdig">#sysdig<span>(1)</span></a></li>
+            
+            <li class="post-tag"><a href="/tags#dns" title="dns">#dns<span>(1)</span></a></li>
+            
+            <li class="post-tag"><a href="/tags#golang" title="golang">#golang<span>(1)</span></a></li>
+            
+            <li class="post-tag"><a href="/tags#http" title="http">#http<span>(1)</span></a></li>
+            
+            <li class="post-tag"><a href="/tags#middleware" title="middleware">#middleware<span>(1)</span></a></li>
+            
+            <li class="post-tag"><a href="/tags#daisywheeljs" title="daisywheeljs">#daisywheeljs<span>(2)</span></a></li>
+            
+            <li class="post-tag"><a href="/tags#daisywheel" title="daisywheel">#daisywheel<span>(1)</span></a></li>
+            
+            <li class="post-tag"><a href="/tags#gamepad" title="gamepad">#gamepad<span>(2)</span></a></li>
+            
+            <li class="post-tag"><a href="/tags#html5" title="html5">#html5<span>(2)</span></a></li>
+            
+            <li class="post-tag"><a href="/tags#flux" title="flux">#flux<span>(1)</span></a></li>
+            
+        </ul>
+
+    </div>
+</footer>
+
+<div id="copyright-band">
+
+    <small id="copyright">Designed by <a href="http://likethemammal.com" title="Chris Dolphin's Personal Site">Chris Dolphin</a> and hosted on <a href="http://github.com/cryptic-io/cryptic-chat/" title="Cryptic IO Github Repo">Github</a></small>
+
+</div>
+
+
+  </body>
+
+  
+
+    <script type="text/javascript">
+    var parent = (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]);
+    var disqus_shortname = 'crypticio'; // required: replace example with your forum shortname
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        parent.appendChild(dsq);
+    })();
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function () {
+        var s = document.createElement('script'); s.async = true;
+        s.type = 'text/javascript';
+        s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+        parent.appendChild(s);
+    }());
+</script>
+
+
+  
+
+  <script>
+    console.log(' \
+           ▄▄▀▀▀▀▀▀▀▀▀▄▄             \n \
+████▄   ▄█▀             ▀▀▄   ▄▄███▀ \n \
+   ▀████▌                  ████▀▀    \n \
+      █▀███▄▄          ▄████▀▌       \n \
+     █    ▀▀███▄▄▄▄▄████▀    █       \n \
+     █        ▀██████▀       ▐▌      \n \
+     █         ▀███▀         ▐       \n \
+     ▐▌         ▐██          █       \n \
+      ▐█        ▐██        ▄█        \n \
+        ▀▄      ▐██       █▀         \n \
+          ▀▀▄▄  ▐██   ▄▄▀            \n \
+              ▀▀▐██▀▀                \n \
+                ▐██                  \n \
+                ▐██                  \n \
+                ▐██                  \
+');
+  </script>
+</html>
