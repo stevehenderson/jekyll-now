@@ -4,6 +4,10 @@ title: Blog
 permalink: /blog/
 ---
 
+<a href="{{ site.baseurl }}/categoryview/">Category View</a>
+
+<hr>
+
 <div class="posts">
   {% for post in site.posts %}
     <article class="post">
