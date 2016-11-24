@@ -1,7 +1,7 @@
 ---
 layout: page
 title: Links
-permalink: /links/
+permalink: /datascience/
 ---
 
 # Data Science 
