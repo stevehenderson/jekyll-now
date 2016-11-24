@@ -1,5 +1,5 @@
 # Site settings
-title: Cryptic Chat
+title: Steve Blog
 email: dolphin@likethemammal.com
 description: >
   We are a group of developers involved in the tech industry that work,
@@ -8,7 +8,7 @@ description: >
   personal goals we collaborating often and want others to share in this 
   experience.
 baseurl: "" # the subpath of your site, e.g. /blog/
-url: "https://cryptic.io" # the base hostname & protocol for your site
+url: "https://stevehenderson.github.io" # the base hostname & protocol for your site
 permalink: :title/
 paginate: 13
 
@@ -16,4 +16,4 @@ author: "Chris Dolphin"
 keywords: 'developers, dev blog, tech industry, programming, development'
 
 # Build settings
-markdown: redcarpet
+markdown: kramdown
