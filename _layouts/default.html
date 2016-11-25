@@ -29,23 +29,13 @@
           <nav>
             <a href="{{ site.baseurl }}/blog/">Blog</a>
             <a href="{{ site.baseurl }}/links/">Links</a>
+            <a href="{{ site.baseurl }}/search/">Search</a>
             <a href="{{ site.baseurl }}/about">About</a>
           </nav>
         </header>
       </div>
     </div>
-    <div class="grid" id="searchBar">
-      <div>
-          <div id="search">
-              <form role="search" method="get" action="{{site.baseurl}}/search/">
-                  <input id="searchString" name="searchString"
-                         placeholder="Learn Ionic, Be a Better Developer, etc." type="text">
-                  <input id="searchButton" name="googleSearchName" type="button" value="Search">
-              </form>
-          </div>
-    
-      </div>
-  </div>
+   
 
     <div id="main" role="main" class="container">
       {{ content }}
