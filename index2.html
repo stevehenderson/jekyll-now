@@ -1,0 +1,24 @@
+---
+layout: default
+---
+
+<h1>Steve's Sandbox</h1>
+
+This is a sandbox to capture the stuff I am working on.
+
+<br><br>
+<a href="{{ site.baseurl }}/datascience">Data Science</a>
+
+
+<hr>
+
+Recent Posts:
+
+<div class="posts">
+  {% for post in site.posts limit 5%}
+    <article class="post">
+      <h1><a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a></h1>
+      <a href="{{ site.baseurl }}{{ post.url }}" class="read-more">Read More</a>
+    </article>
+  {% endfor %}
+</div>
