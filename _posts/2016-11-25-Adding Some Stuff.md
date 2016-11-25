@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Rolling!
+title: Adding to the blog
 categories: ['blog', 'setup']
 tags: ['git', 'search']
 ---
