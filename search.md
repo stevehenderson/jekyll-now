@@ -8,7 +8,7 @@ sitemap: false
 <div id="home-search" class="home">
      <script>
          (function() {
-             var cx = '[Your CSE Search ID]';
+             var cx = '002200317763811359435:wjdd7nuv3pu';
              var gcse = document.createElement('script');
              gcse.type = 'text/javascript';
              gcse.async = true;
