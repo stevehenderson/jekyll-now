@@ -4,7 +4,11 @@ title: Blog
 permalink: /blog/
 ---
 
-<a href="{{ site.baseurl }}/categoryview/">Category View</a>
+<ul>
+  <li><a href="{{ site.baseurl }}/categoryview/">Category View</a></li>
+  <li><a href="{{ site.baseurl }}/tagview/">Tag View</a></li>
+</ul>
+
 
 <hr>
 
