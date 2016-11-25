@@ -4,11 +4,11 @@ title: Data Science
 permalink: /datascience/
 ---
 
-### Data Sources
+# Data Sources
 
-##Cyber
+## Cyber
 
-#Aggregate-level Cyber Attack Data
+### Aggregate-level Cyber Attack Data
 
 [Targeted Cyberattacks logbook](https://apt.securelist.com/#firstPage)
 
@@ -22,7 +22,7 @@ permalink: /datascience/
 
 [​The Center for Strategic Studies](http://csis.org/files/publication/160406_Significant_Cyber_Events_List.pdf)
 
-#Low-Level Data (PCAP, etc)
+### Low-Level Data (PCAP, etc)
 
 [Cyber Security Data Mining Competition (CDMC)](http://www.csmining.org/ )
 
@@ -54,7 +54,7 @@ Our distributed repository of data hosts and providers located at major universi
 
 Learn more about the repository by exploring the tabs above and browse our data catalog to see what kinds of data are available.
 ​
-#Other PCAP
+### Other PCAP
 
 [NETRESEC Data](http://www.netresec.com/?page=PcapFiles)
 
@@ -64,13 +64,13 @@ Lots of CDX and CTF data!
 
 PCAP traces for various network events/attacks
 
-##Images
+## Images
 
 80 Million Tiny Images
 
 ​(http://groups.csail.mit.edu/vision/TinyImages/)
 
-##Media
+## Media
 
 GDELT project
 
@@ -79,7 +79,7 @@ GDELT project
 The GDELT Project is the largest, most comprehensive, and highest resolution open database of human society ever created. Its Event Database archives contain nearly 400M latitude/longitude geographic coordinates spanning over 12,900 days, additionally making it one of the largest open-access spatio-temporal datasets in existance. It truly pushes the boundaries of "big data," weighing in at over a quarter-billion rows with 59 fields for each record, spanning the geography of the entire planet, and covering a time horizon of more than 35 years. Its Global Knowledge Graph connects the world's people, organizations, locations, themes, counts, and emotions into a single holistic network over the entire planet. How can you query, explore, model, visualize, interact, and even forecast this vast archive of human society?
 
 
-##Lists of Data
+## Lists of Data
 
 (http://www.datasciencecentral.com/profiles/blogs/big-data-sets-available-for-free)
 
