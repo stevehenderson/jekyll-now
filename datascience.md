@@ -26,34 +26,21 @@ This timeline records significant cyber incidents since 2006. Focus on cyber att
 
 ### Low-Level Data (PCAP, etc)
 
-[Cyber Security Data Mining Competition (CDMC)](http://www.csmining.org/ )
-Competition for Cyber Data Mining.  Data not publically available.  Interesting to see the prompts for the competition.
+   * [Cyber Security Data Mining Competition (CDMC)](http://www.csmining.org/ ) : Competition for Cyber Data Mining.  Data not publically available.  Interesting to see the prompts for the competition.
 
-[Army Cyber Institute CDX Data](http://www.usma.edu/acc/SitePages/CDX.aspx)
+   * [Army Cyber Institute CDX Data](http://www.usma.edu/acc/SitePages/CDX.aspx)
 
-[KDD CUP 99](http://kdd.ics.uci.edu/databases/kddcup99/kddcup99.html)
+   * [KDD CUP 99](http://kdd.ics.uci.edu/databases/kddcup99/kddcup99.html) : A baseline dataset for IDS.  See: Stolfo, J., et al. "Cost-based modeling and evaluation for data mining with application to fraud and intrusion detection." Results from the JAM Project by Salvatore (2000).
 
-A baseline dataset for IDS
+   * [NSL-KDD](https://web.archive.org/web/20150205070216/http://nsl.cs.unb.ca/NSL-KDD/) : Augments issues with earlier version KDD CUP 99 (see above).  Also available from [here](http://www.unb.ca/research/iscx/dataset/iscx-NSL-KDD-dataset.html)
 
-See: Stolfo, J., et al. "Cost-based modeling and evaluation for data mining with application to fraud and intrusion detection." Results from the JAM Project by Salvatore (2000).
+   * [Predict](https://www.predict.org/) : Protected Repository for the Defense of Infrastructure Against Cyber Threats. 
 
-[NSL-KDD](https://web.archive.org/web/20150205070216/http://nsl.cs.unb.ca/NSL-KDD/)
-
-Augments issues with earlier version KDD CUP 99 (see above).  Also available from [here](http://www.unb.ca/research/iscx/dataset/iscx-NSL-KDD-dataset.html)
-
-​[Predict](https://www.predict.org/)
-
-Protected Repository for the Defense of Infrastructure Against Cyber Threats. 
-​
 ### Other PCAP
 
-[NETRESEC Data](http://www.netresec.com/?page=PcapFiles)
+   * [NETRESEC Data](http://www.netresec.com/?page=PcapFiles) : Lots of CDX and CTF data!
 
-Lots of CDX and CTF data!
-
-[SimpleWeb](http://www.simpleweb.org/wiki/Traces​)
-
-PCAP traces for various network events/attacks
+   * [SimpleWeb](http://www.simpleweb.org/wiki/Traces) : PCAP traces for various network events/attacks
 
 ### Threat Data
 
@@ -62,33 +49,29 @@ PCAP traces for various network events/attacks
 
 ## Images
 
-[80 Million Tiny Images]((http://groups.csail.mit.edu/vision/TinyImages/)
+   * [80 Million Tiny Images](http://groups.csail.mit.edu/vision/TinyImages/)
 
 ## Media
 
-[GDELT project](http://gdeltproject.org/data.html)
-
-The GDELT Project is the largest, most comprehensive, and highest resolution open database of human society ever created. Geotagged social media, news, and other NLP
+   * [GDELT project](http://gdeltproject.org/data.html) : The GDELT Project is the largest, most comprehensive, and highest resolution open database of human society ever created. Geotagged social media, news, and other NLP
 
 ## Lists of Data
 
-[Data Central](http://www.datasciencecentral.com/profiles/blogs/big-data-sets-available-for-free)
+   * [Data Central](http://www.datasciencecentral.com/profiles/blogs/big-data-sets-available-for-free)
 
-[Caesar0301 Awesome List of Public Datasets](https://github.com/caesar0301/awesome-public-datasets)
-
-Pretty big list.  Categorized.
-
+   * [Caesar0301 Awesome List of Public Datasets](https://github.com/caesar0301/awesome-public-datasets) : Pretty big list;  Categorized
+   
 # Tools
 
 ## Notebooks in the Cloud
 
-[Amazon Cloud9](https://aws.amazon.com/cloud9/)
+   * [Amazon Cloud9](https://aws.amazon.com/cloud9/)
 
-[Amazon EMR Notebooks](https://docs.aws.amazon.com/emr/latest/ManagementGuide/emr-managed-notebooks.html)
+   * [Amazon EMR Notebooks](https://docs.aws.amazon.com/emr/latest/ManagementGuide/emr-managed-notebooks.html)
 
-[Amazon Sage Maker](https://aws.amazon.com/blogs/aws/amazon-sagemaker-studio-the-first-fully-integrated-development-environment-for-machine-learning/)
+   * [Amazon Sage Maker](https://aws.amazon.com/blogs/aws/amazon-sagemaker-studio-the-first-fully-integrated-development-environment-for-machine-learning/)
 
-[Datalore](https://datalore.io/)
+   * [Datalore](https://datalore.io/)
 
 
 
