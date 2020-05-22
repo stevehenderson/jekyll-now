@@ -6,7 +6,7 @@ permalink: /datascience/
 
 # Data Sources
 
-## Cyber
+## Cyber Data
 
 ### Aggregate-level Cyber Attack Data
 
