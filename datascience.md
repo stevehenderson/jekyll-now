@@ -6,7 +6,7 @@ permalink: /datascience/
 
 # Data
 
-   *[See Data Page](data.md)
+   * [See Data Page](data.md)
    
 # Tools
 
