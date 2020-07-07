@@ -21,7 +21,7 @@ Links to interesting and useful software.
 
 ## Publications
 
-   * [dblp]:(https://dblp.uni-trier.de/) : Open Comp Sci publication search
+   * [dblp](https://dblp.uni-trier.de/) : Open Comp Sci publication search
    * [Google Scholar](https://scholar.google.com/citations?user=4UaV290AAAAJ&hl=en&oi=sra) : My Google Scholar Profile
    * [Zotero](https://www.zotero.org/henderso/library) : My Zotero repo
 
